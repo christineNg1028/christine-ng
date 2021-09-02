@@ -58,16 +58,6 @@ const styles = () => ({
     height: "50%",
   },
 
-  textL: {
-    width: 500,
-    textAlign: "left",
-  },
-
-  textR: {
-    width: 500,
-    textAlign: "right",
-  },
-
   imgContainer: {
     position: "relative",
   },
@@ -78,19 +68,17 @@ const Profile = ({ classes, profile }) => {
     <Grid className={classes.profileContainer} container justify="center">
       <Grid container xs={5} justify="center" alignItems="center">
         <div className={classes.textL}>
-          <p className={classes.text}>
-            <span
-              style={{
-                background: `linear-gradient(180deg,rgba(255,255,255,0) 55%, ${profile.color} 55%)`,
-              }}
-            >
-              {profile.header}
-            </span>
-            <br />
-            <br /> {profile.description} <br />
-            <br />
-            Read more here.
-          </p>
+          <span
+            style={{
+              background: `linear-gradient(180deg,rgba(255,255,255,0) 55%, ${profile.color} 55%)`,
+            }}
+          >
+            {profile.header}
+          </span>
+          <br />
+          <br /> {profile.description} <br />
+          <br />
+          Read more here.
         </div>
       </Grid>
       <Grid container xs={5} justify="center" alignItems="center">

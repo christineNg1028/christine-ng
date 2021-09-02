@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import SwiperCore, { Autoplay, Mousewheel } from "swiper";
 
-// install Swiper modules
 SwiperCore.use([Autoplay, Mousewheel]);
 
 const styles = () => ({
@@ -106,6 +105,7 @@ const styles = () => ({
   textL: {
     width: 500,
     textAlign: "left",
+    fontSize: 20,
   },
 
   profileImageR: {
@@ -138,6 +138,60 @@ const styles = () => ({
 
   imgContainer: {
     position: "relative",
+  },
+
+  iAm: {
+    opacity: 0.3,
+    textShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)",
+  },
+
+  brushStroke1: {
+    position: "absolute",
+    top: -55,
+    left: -275,
+    height: "160%",
+    width: "200%",
+    zIndex: -1,
+  },
+
+  profileSwiper: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    bottom: 26,
+  },
+
+  carouselHeader: {
+    marginBottom: 100,
+    position: "relative",
+    width: 550,
+  },
+
+  carousel: { position: "relative", marginBottom: 100 },
+
+  brushStroke2: {
+    width: "150%",
+    height: "175%",
+    position: "absolute",
+    bottom: -20,
+    right: -150,
+    zIndex: -1,
+  },
+
+  carouselSwiper: {
+    "--swiper-navigation-color": "#C1C1C1",
+  },
+
+  carouselSwiperSlide: {
+    padding: "0 50px 0 50px",
+  },
+
+  carouselWire: {
+    width: "100%",
+    position: "absolute",
+    top: "-20%",
+    left: 0,
+    zIndex: 1,
   },
 });
 
@@ -193,17 +247,9 @@ const Home = ({ classes }) => {
       <Grid container justify="center">
         <div className={classes.introText}>
           <img
-            className={classes.brushStroke}
+            className={classes.brushStroke1}
             src="/graphics/BrushStroke1.png"
             alt="Brush Stroke"
-            style={{
-              position: "absolute",
-              top: -55,
-              left: -275,
-              height: "160%",
-              width: "200%",
-              zIndex: -1,
-            }}
           />
           <p className={classes.header}>Hey there 👋</p>
           <br />
@@ -221,18 +267,11 @@ const Home = ({ classes }) => {
         <Grid container justify="center">
           <Grid container xs={5} justify="center">
             <div className={classes.textL}>
-              <p className={classes.text}>
-                <p
-                  style={{
-                    opacity: 0.3,
-                    textShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
-                  <br />
-                  <br />
-                  <br />
-                  <br />I am...
-                </p>
+              <p className={classes.iAm}>
+                <br />
+                <br />
+                <br />
+                <br />I am...
               </p>
             </div>
           </Grid>
@@ -253,6 +292,7 @@ const Home = ({ classes }) => {
           </Grid>
         </Grid>
         <Swiper
+          className={classes.profileSwiper}
           direction={"vertical"}
           slidesPerView={1}
           speed={500}
@@ -263,12 +303,6 @@ const Home = ({ classes }) => {
             delay: 10000,
             disableOnInteraction: false,
           }}
-          style={{
-            height: "100%",
-            width: "100%",
-            position: "absolute",
-            bottom: 26,
-          }}
         >
           {profiles.map((profile, key) => (
             <SwiperSlide>
@@ -277,65 +311,52 @@ const Home = ({ classes }) => {
           ))}
         </Swiper>
       </Grid>
-      <Grid container justify="center" style={{ marginBottom: 100 }}>
-        <div style={{ position: "relative", width: 550 }}>
+      <Grid container justify="center">
+        <div className={classes.carouselHeader}>
           <p className={classes.header}>What I've Been Up To</p>
           <img
+            className={classes.brushStroke2}
             src="/graphics/BrushStroke2.png"
             alt="Brush Stroke"
-            style={{
-              width: "150%",
-              height: "175%",
-              position: "absolute",
-              bottom: -20,
-              right: -150,
-              zIndex: -1,
-            }}
           />
         </div>
       </Grid>
-      <Grid style={{ position: "relative", marginBottom: 100 }}>
+      <Grid className={classes.carousel}>
         <Swiper
-          style={{ "--swiper-navigation-color": "#C1C1C1" }}
+          className={classes.carouselSwiper}
           slidesPerView={3}
           navigation={true}
           grabCursor={true}
         >
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
-          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+          <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
           </SwiperSlide>
         </Swiper>
         <img
+          className={classes.carouselWire}
           src="/graphics/Carousel.svg"
           alt="Carousel"
-          style={{
-            width: "100%",
-            position: "absolute",
-            top: "-20%",
-            left: 0,
-            zIndex: 1,
-          }}
         />
       </Grid>
     </>

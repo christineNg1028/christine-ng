@@ -27,26 +27,24 @@ const styles = () => ({
 
 const Footer = ({ classes }) => {
   return (
-    <div className={classes.footerContainer}>
-      <Grid container alignItems="center" style={{ height: "inherit" }}>
-        <Grid container xs={4}>
-          Connect With Me
-          <div className={classes.socials}>
-            {socials.map((social) => (
-              <a href={social.url} target="_blank" rel="noreferrer">
-                <img
-                  src={social.icon}
-                  alt={social.name}
-                  className={classes.socialIcon}
-                />
-              </a>
-            ))}
-          </div>
-        </Grid>
-        <Grid container xs={4} justify="center"></Grid>
-        <Grid container xs={4} justify="flex-end"></Grid>
+    <Grid container alignItems="center" className={classes.footerContainer}>
+      <Grid container xs={4}>
+        Connect With Me
+        <div className={classes.socials}>
+          {socials.map((social) => (
+            <a href={social.url} target="_blank" rel="noreferrer">
+              <img
+                src={social.icon}
+                alt={social.name}
+                className={classes.socialIcon}
+              />
+            </a>
+          ))}
+        </div>
       </Grid>
-    </div>
+      <Grid container xs={4} justify="center"></Grid>
+      <Grid container xs={4} justify="flex-end"></Grid>
+    </Grid>
   );
 };
 
