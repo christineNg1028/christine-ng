@@ -1,17 +1,27 @@
 import React from "react";
 import { Grid, withStyles } from "@material-ui/core";
-import Rectangle from "../graphics/Rectangle.svg";
-import PaperclipL from "../graphics/PaperclipL.svg";
-import PaperclipR from "../graphics/PaperclipR.svg";
-import Headshot from "../images/Headshot.jpg";
-import Portrait from "../images/Portrait.jpg";
+import Profile from "../components/Profile";
+import profiles from "../collections/profiles";
+import ActivityCard from "../components/ActivityCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import SwiperCore, { Autoplay, Mousewheel } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Autoplay, Mousewheel]);
 
 const styles = () => ({
+  imagesContainer: {
+    minHeight: 615,
+    maxHeight: 1100,
+    marginBottom: 50,
+  },
+
   leftImageContainer: {
     position: "relative",
     width: "500px",
     marginTop: 50,
-    marginRight: 50,
+    marginRight: 100,
   },
 
   leftRect: {
@@ -29,6 +39,11 @@ const styles = () => ({
     border: "25px solid white",
     filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))",
     transform: "rotate(-13.1deg)",
+    transition: "ease-out 0.2s",
+    "&:hover": {
+      transform: "rotate(-9.1deg)",
+      transition: "ease-out 0.2s",
+    },
   },
 
   leftPaperclip: {
@@ -41,7 +56,8 @@ const styles = () => ({
   rightImageContainer: {
     position: "relative",
     width: "500px",
-    marginLeft: 50,
+    marginTop: 50,
+    marginLeft: 100,
   },
 
   rightRect: {
@@ -58,6 +74,11 @@ const styles = () => ({
     border: "25px solid white",
     filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))",
     transform: "rotate(4.37deg)",
+    transition: "ease-out 0.2s",
+    "&:hover": {
+      transform: "rotate(0.37deg)",
+      transition: "ease-out 0.2s",
+    },
   },
 
   rightPaperclip: {
@@ -66,40 +87,258 @@ const styles = () => ({
     right: 115,
     height: "146px",
   },
+
+  introText: {
+    width: 525,
+    position: "relative",
+  },
+
+  header: { fontSize: 50 },
+
+  text: { fontSize: 20 },
+
+  profiles: {
+    margin: "200px 0 200px 0",
+    height: "532px",
+    position: "relative",
+  },
+
+  textL: {
+    width: 500,
+    textAlign: "left",
+  },
+
+  profileImageR: {
+    width: "335px",
+    height: "475px",
+    border: "25px solid white",
+    filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1))",
+    transform: "matrix(0.98, 0.18, -0.18, 0.98, 0, 0)",
+    position: "relative",
+    zIndex: 2,
+  },
+
+  tapeRTL: {
+    position: "absolute",
+    top: -100,
+    left: -10,
+    width: "35%",
+    height: "35%",
+    zIndex: 2,
+  },
+
+  tapeRBR: {
+    position: "absolute",
+    bottom: -92,
+    right: 0,
+    width: "35%",
+    height: "35%",
+    zIndex: 2,
+  },
+
+  imgContainer: {
+    position: "relative",
+  },
 });
 
 const Home = ({ classes }) => {
   return (
-    <Grid
-      container
-      spacing={10}
-      justify="center"
-      alignItems="center"
-      style={{ height: 750 }}
-    >
-      <Grid item justify="center">
-        <div className={classes.leftImageContainer}>
-          <img className={classes.leftRect} src={Rectangle} alt="Rectangle" />
-          <img className={classes.leftImage} src={Headshot} alt="Headshot" />
+    <>
+      <Grid
+        className={classes.imagesContainer}
+        container
+        xs={12}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item>
+          <div className={classes.leftImageContainer}>
+            <img
+              className={classes.leftRect}
+              src="/graphics/Rectangle.svg"
+              alt="Rectangle"
+            />
+            <img
+              className={classes.leftImage}
+              src="/images/Headshot.jpg"
+              alt="Headshot"
+            />
+            <img
+              className={classes.leftPaperclip}
+              src="/graphics/PaperclipL.svg"
+              alt="Paperclip"
+            />
+          </div>
+        </Grid>
+        <Grid item>
+          <div className={classes.rightImageContainer}>
+            <img
+              className={classes.rightRect}
+              src="/graphics/Rectangle.svg"
+              alt="Rectangle"
+            />
+            <img
+              className={classes.rightImage}
+              src="/images/Portrait.jpg"
+              alt="Portrait"
+            />
+            <img
+              className={classes.rightPaperclip}
+              src="/graphics/PaperclipR.svg"
+              alt="Paperclip"
+            />
+          </div>
+        </Grid>
+      </Grid>
+      <Grid container justify="center">
+        <div className={classes.introText}>
           <img
-            className={classes.leftPaperclip}
-            src={PaperclipL}
-            alt="Paperclip"
+            className={classes.brushStroke}
+            src="/graphics/BrushStroke1.png"
+            alt="Brush Stroke"
+            style={{
+              position: "absolute",
+              top: -55,
+              left: -275,
+              height: "160%",
+              width: "200%",
+              zIndex: -1,
+            }}
+          />
+          <p className={classes.header}>Hey there 👋</p>
+          <br />
+          <p className={classes.text}>
+            Welcome to my creative outlet! <br />
+            <br />
+            This is where I share little snippets of my life through my
+            projects, photography, lifestyle blog, and journal.
+            <br />
+            <br /> Scroll to get to know me :)
+          </p>
+        </div>
+      </Grid>
+      <Grid className={classes.profiles}>
+        <Grid container justify="center">
+          <Grid container xs={5} justify="center">
+            <div className={classes.textL}>
+              <p className={classes.text}>
+                <p
+                  style={{
+                    opacity: 0.3,
+                    textShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <br />
+                  <br />
+                  <br />
+                  <br />I am...
+                </p>
+              </p>
+            </div>
+          </Grid>
+          <Grid xs={5} container justify="center" alignItems="center">
+            <div className={classes.imgContainer}>
+              <div className={classes.profileImageR} />
+              <img
+                className={classes.tapeRTL}
+                src="/graphics/Tape.svg"
+                alt="Tape"
+              />
+              <img
+                className={classes.tapeRBR}
+                src="/graphics/Tape.svg"
+                alt="Tape"
+              />
+            </div>
+          </Grid>
+        </Grid>
+        <Swiper
+          direction={"vertical"}
+          slidesPerView={1}
+          speed={500}
+          mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
+          noSwiping={true}
+          touchRatio={0}
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: false,
+          }}
+          style={{
+            height: "100%",
+            width: "100%",
+            position: "absolute",
+            bottom: 26,
+          }}
+        >
+          {profiles.map((profile, key) => (
+            <SwiperSlide>
+              <Profile classes={classes} profile={profile} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Grid>
+      <Grid container justify="center" style={{ marginBottom: 100 }}>
+        <div style={{ position: "relative", width: 550 }}>
+          <p className={classes.header}>What I've Been Up To</p>
+          <img
+            src="/graphics/BrushStroke2.png"
+            alt="Brush Stroke"
+            style={{
+              width: "150%",
+              height: "175%",
+              position: "absolute",
+              bottom: -20,
+              right: -150,
+              zIndex: -1,
+            }}
           />
         </div>
       </Grid>
-      <Grid item justify="center">
-        <div className={classes.rightImageContainer}>
-          <img className={classes.rightRect} src={Rectangle} alt="Rectangle" />
-          <img className={classes.rightImage} src={Portrait} alt="Portrait" />
-          <img
-            className={classes.rightPaperclip}
-            src={PaperclipR}
-            alt="Paperclip"
-          />
-        </div>
+      <Grid style={{ position: "relative", marginBottom: 100 }}>
+        <Swiper
+          style={{ "--swiper-navigation-color": "#C1C1C1" }}
+          slidesPerView={3}
+          navigation={true}
+          grabCursor={true}
+        >
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+          <SwiperSlide style={{ paddingLeft: 50, paddingRight: 50 }}>
+            <ActivityCard classes={classes} />
+          </SwiperSlide>
+        </Swiper>
+        <img
+          src="/graphics/Carousel.svg"
+          alt="Carousel"
+          style={{
+            width: "100%",
+            position: "absolute",
+            top: "-20%",
+            left: 0,
+            zIndex: 1,
+          }}
+        />
       </Grid>
-    </Grid>
+    </>
   );
 };
 

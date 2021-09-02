@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import FolderTab from "../graphics/FolderTab.svg";
+import tabs from "../collections/tabs";
 
 const styles = () => ({
   navContainer: {
@@ -42,7 +42,7 @@ const styles = () => ({
     width: "163px",
     height: "45px",
     marginTop: "25px",
-    backgroundImage: `url(${FolderTab})`,
+    backgroundImage: "url(/graphics/FolderTab.svg)",
     backgroundPosition: "50% 0%",
     backgroundSize: "175px",
     textAlign: "center",
@@ -68,18 +68,11 @@ const NavBar = ({ classes }) => {
         </a>
 
         <ul className={classes.navUl}>
-          <a className={classes.navItems} href="/">
-            <li>Resume</li>
-          </a>
-          <a className={classes.navItems} href="./projects">
-            <li>Projects</li>
-          </a>
-          <a className={classes.navItems} href="./photography">
-            <li>Photography</li>
-          </a>
-          <a className={classes.navItems} href="./journal">
-            <li>Journal</li>
-          </a>
+          {tabs.map((tab) => (
+            <a className={classes.navItems} href={tab.url}>
+              <li>{tab.name}</li>
+            </a>
+          ))}
         </ul>
       </nav>
     </div>
