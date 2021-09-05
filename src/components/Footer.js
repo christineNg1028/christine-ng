@@ -1,5 +1,6 @@
 import React from "react";
-import { Grid, withStyles } from "@material-ui/core";
+import { Grid } from "@mui/material";
+import { withStyles } from "@mui/styles";
 import socials from "../collections/socials";
 
 const styles = () => ({
@@ -42,7 +43,7 @@ const Footer = ({ classes }) => {
           ))}
         </div>
       </Grid>
-      <Grid container xs={4} justify="center"></Grid>
+      <Grid container xs={4} justifyContent="center"></Grid>
       <Grid container xs={4} justify="flex-end"></Grid>
     </Grid>
   );

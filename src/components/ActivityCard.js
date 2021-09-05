@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  withStyles,
-} from "@material-ui/core";
+import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 const styles = () => ({
   root: {

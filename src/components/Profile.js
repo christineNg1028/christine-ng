@@ -1,5 +1,6 @@
 import React from "react";
-import { Grid, withStyles } from "@material-ui/core";
+import { Grid } from "@mui/material";
+import { withStyles } from "@mui/styles";
 
 const styles = () => ({
   profileContainer: {
@@ -65,8 +66,12 @@ const styles = () => ({
 
 const Profile = ({ classes, profile }) => {
   return (
-    <Grid className={classes.profileContainer} container justify="center">
-      <Grid container xs={5} justify="center" alignItems="center">
+    <Grid
+      className={classes.profileContainer}
+      container
+      justifyContent="center"
+    >
+      <Grid container xs={5} justifyContent="center" alignItems="center">
         <div className={classes.textL}>
           <span
             style={{
@@ -81,7 +86,7 @@ const Profile = ({ classes, profile }) => {
           Read more here.
         </div>
       </Grid>
-      <Grid container xs={5} justify="center" alignItems="center">
+      <Grid container xs={5} justifyContent="center" alignItems="center">
         <div className={classes.imgContainer}>
           <img
             className={classes.profileImage}

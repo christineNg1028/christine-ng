@@ -1,5 +1,6 @@
 import React from "react";
-import { Grid, withStyles } from "@material-ui/core";
+import { Grid } from "@mui/material";
+import { withStyles } from "@mui/styles";
 import Profile from "../components/Profile";
 import profiles from "../collections/profiles";
 import ActivityCard from "../components/ActivityCard";
@@ -164,7 +165,7 @@ const styles = () => ({
   carouselHeader: {
     marginBottom: 100,
     position: "relative",
-    width: 550,
+    width: 600,
   },
 
   carousel: { position: "relative", marginBottom: 100 },
@@ -173,8 +174,8 @@ const styles = () => ({
     width: "150%",
     height: "175%",
     position: "absolute",
-    bottom: -20,
-    right: -150,
+    bottom: -25,
+    left: -125,
     zIndex: -1,
   },
 
@@ -202,7 +203,7 @@ const Home = ({ classes }) => {
         className={classes.imagesContainer}
         container
         xs={12}
-        justify="center"
+        justifyContent="center"
         alignItems="center"
       >
         <Grid item>
@@ -244,7 +245,7 @@ const Home = ({ classes }) => {
           </div>
         </Grid>
       </Grid>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <div className={classes.introText}>
           <img
             className={classes.brushStroke1}
@@ -264,8 +265,8 @@ const Home = ({ classes }) => {
         </div>
       </Grid>
       <Grid className={classes.profiles}>
-        <Grid container justify="center">
-          <Grid container xs={5} justify="center">
+        <Grid container justifyContent="center">
+          <Grid container xs={5} justifyContent="center">
             <div className={classes.textL}>
               <p className={classes.iAm}>
                 <br />
@@ -275,7 +276,7 @@ const Home = ({ classes }) => {
               </p>
             </div>
           </Grid>
-          <Grid xs={5} container justify="center" alignItems="center">
+          <Grid xs={5} container justifyContent="center" alignItems="center">
             <div className={classes.imgContainer}>
               <div className={classes.profileImageR} />
               <img
@@ -311,9 +312,9 @@ const Home = ({ classes }) => {
           ))}
         </Swiper>
       </Grid>
-      <Grid container justify="center">
+      <Grid container justifyContent="center">
         <div className={classes.carouselHeader}>
-          <p className={classes.header}>What I've Been Up To</p>
+          <p className={classes.header}>What I've Been Up To ☕</p>
           <img
             className={classes.brushStroke2}
             src="/graphics/BrushStroke2.png"
