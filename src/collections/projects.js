@@ -20,11 +20,8 @@ const projects = [
     title: "Heads Up Guys",
     subTitle: "Hack the North 2020++ | A protest app built for activists.",
     img: "/images/projects/rally.png",
-    video: "",
     description:
       "Hack the North 2020++ was my very first hackathon! It was also my first time using React Native. I worked in a team of 4 to develop a mobile app for activists to find protests to take part in, and to stay safe and informed during them.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["Front End", "Mobile Dev", "UI Design"],
@@ -75,11 +72,8 @@ const projects = [
     title: "DotsLogistics",
     subTitle: "Hack the North 2020++ | A protest app built for activists.",
     img: "/images/projects/rally.png",
-    video: "",
     description:
       "Hack the North 2020++ was my very first hackathon! It was also my first time using React Native. I worked in a team of 4 to develop a mobile app for activists to find protests to take part in, and to stay safe and informed during them.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["Front End", "Mobile Dev", "UI Design"],
@@ -131,11 +125,8 @@ const projects = [
     subTitle:
       "A knowledge-sharing platform for researchers, educators, and students.",
     img: "/images/projects/DotsLive.jpg",
-    video: "",
     description:
       "At Dataraction, I was a member of the web development team, working on DotsLive - a knowledge-sharing platform focused on community building through events, collaboration tools, and peer feedback features.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["Front End", "Web Dev", "UI Design"],
@@ -186,11 +177,8 @@ const projects = [
     title: "rally",
     subTitle: "Hack the North 2020++ | A protest app built for activists.",
     img: "/images/projects/rally.png",
-    video: "",
     description:
       "Hack the North 2020++ was my very first hackathon! It was also my first time using React Native. I worked in a team of 4 to develop a mobile app for activists to find protests to take part in, and to stay safe and informed during them.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["Front End", "Mobile Dev", "UI Design"],
@@ -241,11 +229,8 @@ const projects = [
     title: "Better Bytes",
     subTitle: "Hack the North 2020++ | A protest app built for activists.",
     img: "/images/projects/BetterBytes.png",
-    video: "",
     description:
       "Hack the North 2020++ was my very first hackathon! It was also my first time using React Native. I worked in a team of 4 to develop a mobile app for activists to find protests to take part in, and to stay safe and informed during them.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["GUI Dev"],
@@ -297,11 +282,8 @@ const projects = [
     subTitle:
       "The E3 Challenge 2020 | Smart city air quality monitoring web app.",
     img: "/images/projects/concentrations.jpg",
-    video: "",
     description:
       "Hack the North 2020++ was my very first hackathon! It was also my first time using React Native. I worked in a team of 4 to develop a mobile app for activists to find protests to take part in, and to stay safe and informed during them.",
-    keyFeatures: [],
-    highlights: [],
     date: "",
     category: "Software & UI",
     tags: ["Front End", "Mobile Dev", "UI Design"],

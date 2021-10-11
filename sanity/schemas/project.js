@@ -19,26 +19,9 @@ const project = {
       type: "image",
     },
     {
-      title: "Video",
-      name: "video",
-      type: "url",
-    },
-    {
       title: "Description",
       name: "description",
-      type: "string",
-    },
-    {
-      title: "Key Features",
-      name: "keyFeatures",
-      type: "array",
-      of: [{ type: "string" }],
-    },
-    {
-      title: "Highlights",
-      name: "highlights",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "text",
     },
     {
       title: "Date",
