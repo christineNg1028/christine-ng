@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ProjectCard from "../components/ProjectCard";
@@ -11,46 +11,105 @@ import ModalContent from "../components/ModalContent";
 const styles = () => ({});
 
 const Projects = ({ classes }) => {
-  const projectTabs = [
+  const tabs = [
     {
       name: "Software & UI",
-      url: "",
+      ref: useRef(null),
     },
     {
       name: "3D Design",
-      url: "",
+      ref: useRef(null),
     },
     {
       name: "In Progress",
-      url: "",
+      ref: useRef(null),
     },
   ];
 
+  // Sort by date from most recent to least recent
+  const softwareAndUI = projects.filter(
+    ({ category }) => category === "Software & UI"
+  );
+  const design = projects.filter(({ category }) => category === "3D Design");
+  const inProgress = projects.filter(
+    ({ category }) => category === "In Progress"
+  );
+
   const [showModal, setShowModal] = useState(false);
   const [currentCard, setCurrentCard] = useState(null);
+  const [currentTab, setCurrentTab] = useState(0);
 
-  const showProjectDetails = (i) => {
-    setCurrentCard(i);
-    setTimeout(() => setShowModal(true), 100);
+  const showProjectDetails = (project) => {
+    setCurrentCard(project);
+    setTimeout(() => setShowModal(true), 150);
   };
 
   const hideProjectDetails = () => {
     setShowModal(false);
-    setTimeout(() => setCurrentCard(null), 100);
+    setTimeout(() => setCurrentCard(null), 150);
+  };
+
+  const handleTabClick = (i) => {
+    tabs[i].ref.current.scrollIntoView({ behavior: "smooth" });
+    setCurrentTab(i);
   };
 
   return (
     <Grid container xs={12}>
       <Grid xs={1}>
-        <SideNav tabs={projectTabs} />
+        <SideNav
+          tabs={tabs}
+          currentTab={currentTab}
+          onTabClick={handleTabClick}
+        />
       </Grid>
-      <Grid container justifyContent="center" xs={11} style={{ padding: 50 }}>
-        {projects.map((project, i) => (
+      <Grid
+        ref={tabs[0].ref}
+        container
+        justifyContent="center"
+        xs={11}
+        style={{ padding: 50 }}
+      >
+        {softwareAndUI.map((project) => (
           <Grid xs="auto" item style={{ padding: 50 }}>
             <ProjectCard
               project={project}
-              showProjectDetails={() => showProjectDetails(i)}
-              current={currentCard === i}
+              showProjectDetails={() => showProjectDetails(project)}
+              current={currentCard === project}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      <Grid
+        ref={tabs[1].ref}
+        container
+        justifyContent="center"
+        xs={11}
+        style={{ padding: 50 }}
+      >
+        {design.map((project) => (
+          <Grid xs="auto" item style={{ padding: 50 }}>
+            <ProjectCard
+              project={project}
+              showProjectDetails={() => showProjectDetails(project)}
+              current={currentCard === project}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      <Grid
+        ref={tabs[2].ref}
+        container
+        justifyContent="center"
+        xs={11}
+        style={{ padding: 50 }}
+      >
+        {inProgress.map((project) => (
+          <Grid xs="auto" item style={{ padding: 50 }}>
+            <ProjectCard
+              project={project}
+              showProjectDetails={() => showProjectDetails(project)}
+              current={currentCard === project}
             />
           </Grid>
         ))}
@@ -61,7 +120,7 @@ const Projects = ({ classes }) => {
         onClose={() => hideProjectDetails()}
         customStyles={{ overflow: "scroll", width: "65%", height: "90%" }}
       >
-        <ModalContent project={projects[currentCard]} />
+        <ModalContent project={currentCard} />
       </Rodal>
     </Grid>
   );
