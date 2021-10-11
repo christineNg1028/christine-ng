@@ -70,7 +70,7 @@ const project = {
             {
               title: "Description",
               name: "description",
-              type: "string",
+              type: "text",
             },
             {
               title: "Key Features",

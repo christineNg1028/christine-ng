@@ -1,16 +1,35 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ProjectCard from "../components/ProjectCard";
 import SideNav from "../components/SideNav";
-import projects from "../collections/projects";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import ModalContent from "../components/ModalContent";
+import sanityClient from "../client.js";
 
 const styles = () => ({});
 
 const Projects = ({ classes }) => {
+  const [softwareAndUI, setSoftwareAndUI] = useState([]);
+  const [design, setDesign] = useState([]);
+  const [inProgress, setInProgress] = useState([]);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "project"]`)
+      .then((data) => {
+        setSoftwareAndUI(
+          data.filter(({ category }) => category === "Software & UI")
+        );
+        setDesign(data.filter(({ category }) => category === "3D Design"));
+        setInProgress(
+          data.filter(({ category }) => category === "In Progress")
+        );
+      })
+      .catch(console.error);
+  }, []);
+
   const tabs = [
     {
       name: "Software & UI",
@@ -25,15 +44,6 @@ const Projects = ({ classes }) => {
       ref: useRef(null),
     },
   ];
-
-  // Sort by date from most recent to least recent
-  const softwareAndUI = projects.filter(
-    ({ category }) => category === "Software & UI"
-  );
-  const design = projects.filter(({ category }) => category === "3D Design");
-  const inProgress = projects.filter(
-    ({ category }) => category === "In Progress"
-  );
 
   const [showModal, setShowModal] = useState(false);
   const [currentCard, setCurrentCard] = useState(null);

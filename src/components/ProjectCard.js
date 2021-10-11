@@ -9,6 +9,8 @@ import {
 import { withStyles } from "@mui/styles";
 import { tagColors } from "../collections/projects";
 import ReactCardFlip from "react-card-flip";
+import sanityClient from "../client.js";
+import imageUrlBuilder from "@sanity/image-url";
 
 const styles = () => ({
   root: {
@@ -23,6 +25,12 @@ const styles = () => ({
 });
 
 const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
+  const builder = imageUrlBuilder(sanityClient);
+
+  const urlFor = (source) => {
+    return builder.image(source);
+  };
+
   const [lightsOn, setLightsOn] = useState(false);
 
   return (
@@ -49,7 +57,7 @@ const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
           <CardActionArea disableRipple onClick={() => showProjectDetails()}>
             <CardMedia
               className={classes.media}
-              image={project.img}
+              image={urlFor(project.img).url()}
               title={project.title}
             />
             <CardContent>
