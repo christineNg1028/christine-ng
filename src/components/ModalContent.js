@@ -5,32 +5,28 @@ import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FiPaperclip } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import sanityClient from "../client.js";
-import imageUrlBuilder from "@sanity/image-url";
+import urlFor from "../imageBuilder.js";
 
 const styles = () => ({});
 
 const ModalContent = ({ classes, project }) => {
-  const builder = imageUrlBuilder(sanityClient);
-
-  const urlFor = (source) => {
-    return builder.image(source);
-  };
-
   const fac = new FastAverageColor();
   const [avgColor, setAvgColor] = useState("#000");
   const [contrastColor, setContrastColor] = useState("#fff");
 
   useEffect(() => {
-    fac
-      .getColorAsync("/images/projects/BetterBytes.png")
-      .then((color) => {
-        setAvgColor(color.hex);
-        setContrastColor(color.isLight ? "#000" : "#fff");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    if (project) {
+      fac
+        .getColorAsync(urlFor(project.img).url())
+        .then((color) => {
+          console.log(color.isLight);
+          setAvgColor(color.hex);
+          setContrastColor(color.isLight ? "#000" : "#fff");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   });
 
   return (

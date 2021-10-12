@@ -73,57 +73,45 @@ const Projects = ({ classes }) => {
           onTabClick={handleTabClick}
         />
       </Grid>
-      <Grid
-        ref={tabs[0].ref}
-        container
-        justifyContent="center"
-        xs={11}
-        style={{ padding: 50 }}
-      >
-        {softwareAndUI.map((project) => (
-          <Grid xs="auto" item style={{ padding: 50 }}>
-            <ProjectCard
-              project={project}
-              showProjectDetails={() => showProjectDetails(project)}
-              current={currentCard === project}
-            />
-          </Grid>
-        ))}
+      <Grid container xs={11} style={{ padding: 50 }}>
+        <Grid container ref={tabs[0].ref} style={{ marginBottom: 75 }}>
+          {softwareAndUI.map((project) => (
+            <Grid xs="auto" item style={{ padding: 50 }}>
+              <ProjectCard
+                project={project}
+                showProjectDetails={() => showProjectDetails(project)}
+                current={currentCard === project}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        <Grid container ref={tabs[1].ref} style={{ marginBottom: 75 }}>
+          {design.map((project) => (
+            <Grid xs="auto" item style={{ padding: 50 }}>
+              <ProjectCard
+                project={project}
+                showProjectDetails={() => showProjectDetails(project)}
+                current={currentCard === project}
+              />
+            </Grid>
+          ))}
+        </Grid>
+        <br />
+        <br />
+        <br />
+        <Grid container ref={tabs[2].ref} style={{ marginBottom: 75 }}>
+          {inProgress.map((project) => (
+            <Grid xs="auto" item style={{ padding: 50 }}>
+              <ProjectCard
+                project={project}
+                showProjectDetails={() => showProjectDetails(project)}
+                current={currentCard === project}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
-      <Grid
-        ref={tabs[1].ref}
-        container
-        justifyContent="center"
-        xs={11}
-        style={{ padding: 50 }}
-      >
-        {design.map((project) => (
-          <Grid xs="auto" item style={{ padding: 50 }}>
-            <ProjectCard
-              project={project}
-              showProjectDetails={() => showProjectDetails(project)}
-              current={currentCard === project}
-            />
-          </Grid>
-        ))}
-      </Grid>
-      <Grid
-        ref={tabs[2].ref}
-        container
-        justifyContent="center"
-        xs={11}
-        style={{ padding: 50 }}
-      >
-        {inProgress.map((project) => (
-          <Grid xs="auto" item style={{ padding: 50 }}>
-            <ProjectCard
-              project={project}
-              showProjectDetails={() => showProjectDetails(project)}
-              current={currentCard === project}
-            />
-          </Grid>
-        ))}
-      </Grid>
+
       <Rodal
         visible={showModal}
         duration={500}

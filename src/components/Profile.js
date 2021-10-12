@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
+import urlFor from "../imageBuilder.js";
 
 const styles = () => ({
   profileContainer: {
@@ -90,7 +91,7 @@ const Profile = ({ classes, profile }) => {
         <div className={classes.imgContainer}>
           <img
             className={classes.profileImage}
-            src={profile.img}
+            src={urlFor(profile.img).url()}
             alt="Portrait"
           />
         </div>

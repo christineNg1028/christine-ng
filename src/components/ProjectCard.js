@@ -9,8 +9,7 @@ import {
 import { withStyles } from "@mui/styles";
 import { tagColors } from "../collections/projects";
 import ReactCardFlip from "react-card-flip";
-import sanityClient from "../client.js";
-import imageUrlBuilder from "@sanity/image-url";
+import urlFor from "../imageBuilder.js";
 
 const styles = () => ({
   root: {
@@ -25,12 +24,6 @@ const styles = () => ({
 });
 
 const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
-  const builder = imageUrlBuilder(sanityClient);
-
-  const urlFor = (source) => {
-    return builder.image(source);
-  };
-
   const [lightsOn, setLightsOn] = useState(false);
 
   return (

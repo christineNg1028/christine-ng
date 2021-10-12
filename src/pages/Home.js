@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import Profile from "../components/Profile";
-import profiles from "../collections/profiles";
 import ActivityCard from "../components/ActivityCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import SwiperCore, { Autoplay, Mousewheel } from "swiper";
+import sanityClient from "../client.js";
 
 SwiperCore.use([Autoplay, Mousewheel]);
 
@@ -197,6 +197,17 @@ const styles = () => ({
 });
 
 const Home = ({ classes }) => {
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "profile"]`)
+      .then((data) => {
+        setProfiles(data);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
     <>
       <Grid
