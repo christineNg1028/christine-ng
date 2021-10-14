@@ -81,6 +81,7 @@ const ModalContent = ({ classes, project }) => {
                   backgroundColor: avgColor,
                   color: contrastColor,
                   border: `1px solid ${contrastColor}`,
+                  opacity: 0.7,
                 }}
               >
                 See Project

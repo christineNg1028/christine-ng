@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  Chip,
-  CardMedia,
-} from "@mui/material";
+import { Card, CardActionArea, Chip, CardMedia, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { tagColors } from "../collections/projects";
 import ReactCardFlip from "react-card-flip";
@@ -17,6 +11,8 @@ const styles = () => ({
     borderRadius: 0,
     width: "395px",
     height: "280px",
+    textAlign: "left",
+    fontFamily: "Inter",
   },
   media: {
     height: "160px",
@@ -53,17 +49,26 @@ const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
               image={urlFor(project.img).url()}
               title={project.title}
             />
-            <CardContent>
-              <p style={{ fontSize: 20 }}>{project.title}</p>
-              <br />
-              {project.tags.map((tag) => (
-                <Chip
-                  size="small"
-                  label={tag}
-                  style={{ margin: 3, backgroundColor: tagColors(tag) }}
-                />
-              ))}
-            </CardContent>
+            <Box margin={1}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                marginBottom={1}
+              >
+                <p style={{ fontSize: 20 }}>{project.title}</p>
+                <div>
+                  {project.tags.map((tag) => (
+                    <Chip
+                      size="small"
+                      label={tag}
+                      style={{ margin: 3, backgroundColor: tagColors(tag) }}
+                    />
+                  ))}
+                </div>
+              </Box>
+              <p style={{ fontSize: 14 }}>{project.subtitle}</p>
+            </Box>
           </CardActionArea>
         </Card>
         <Card
