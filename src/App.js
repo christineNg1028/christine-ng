@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/projects">
+          <Route path="/projects">
             <Projects />
           </Route>
           <Redirect to="/404" />
