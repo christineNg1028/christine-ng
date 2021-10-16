@@ -11,12 +11,12 @@ const socials = [
   },
   {
     name: "LinkedIn",
-    icon: "graphics/LinkedIn.svg",
+    icon: "/graphics/LinkedIn.svg",
     url: "https://www.linkedin.com/in/-christine-ng-/",
   },
   {
     name: "GitHub",
-    icon: "graphics/GitHub.svg",
+    icon: "/graphics/GitHub.svg",
     url: "https://github.com/christineNg1028",
   },
   {
