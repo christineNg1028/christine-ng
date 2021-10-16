@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Projects from "./pages/Projects";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router basename="/">
         <Switch>
           <Route exact path="/">
             <Home />
