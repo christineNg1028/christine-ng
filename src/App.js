@@ -14,12 +14,12 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/projects">
+          <Route exact path="/projects">
             <Projects />
           </Route>
           <Redirect to="/404" />
