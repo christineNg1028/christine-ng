@@ -5,7 +5,7 @@ const tabs = [
   },
   {
     name: "Projects",
-    url: "/projects",
+    url: "#/projects",
   },
   {
     name: "Photography",
