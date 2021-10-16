@@ -2,11 +2,11 @@ import React from "react";
 import { withStyles } from "@mui/styles";
 import tabs from "../collections/tabs";
 
-const styles = () => ({
+const styles = (theme) => ({
   navContainer: {
     background: "white",
     height: "72px",
-    borderBottom: "2px solid #d8c7b5",
+    borderBottom: `2px solid ${theme.palette.primary.main}`,
   },
 
   nav: {
@@ -18,7 +18,7 @@ const styles = () => ({
   navLogo: {
     position: "absolute",
     left: "50px",
-    top: "20px",
+    top: "12px",
     fontWeight: "normal",
     fontSize: "24px",
     textAlign: "center",
@@ -47,7 +47,7 @@ const styles = () => ({
     backgroundSize: "175px",
     textAlign: "center",
     textDecoration: "none",
-    color: "#d8c7b5",
+    color: theme.palette.primary.main,
     fontSize: "14px",
     lineHeight: "50px",
     transition: "ease-out 0.2s",
@@ -64,7 +64,7 @@ const NavBar = ({ classes }) => {
     <div className={classes.navContainer}>
       <nav className={classes.nav}>
         <a href="/" className={classes.navLogo}>
-          Christine Ng
+          <img src="/graphics/Signature.svg" alt="Signature" />
         </a>
 
         <ul className={classes.navUl}>

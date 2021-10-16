@@ -3,11 +3,11 @@ import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import socials from "../collections/socials";
 
-const styles = () => ({
+const styles = (theme) => ({
   footerContainer: {
     background: "white",
-    height: "130px",
-    borderTop: "2px solid #d8c7b5",
+    height: "100px",
+    borderTop: `2px solid ${theme.palette.primary.main}`,
     paddingLeft: 50,
     paddingRight: 50,
   },
@@ -30,7 +30,6 @@ const Footer = ({ classes }) => {
   return (
     <Grid container alignItems="center" className={classes.footerContainer}>
       <Grid container xs={4}>
-        Connect With Me
         <div className={classes.socials}>
           {socials.map((social) => (
             <a href={social.url} target="_blank" rel="noreferrer">
@@ -43,8 +42,9 @@ const Footer = ({ classes }) => {
           ))}
         </div>
       </Grid>
-      <Grid container xs={4} justifyContent="center"></Grid>
-      <Grid container xs={4} justify="flex-end"></Grid>
+      <Grid container xs={4} justifyContent="center">
+        Made with 💖 by Christine Ng © 2021
+      </Grid>
     </Grid>
   );
 };
