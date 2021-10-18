@@ -11,7 +11,7 @@ const profile = {
     {
       title: "Description",
       name: "description",
-      type: "string",
+      type: "text",
     },
     {
       title: "Image",
