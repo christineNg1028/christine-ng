@@ -22,7 +22,7 @@ const ActivityCard = ({ classes }) => {
           image="/images/SYDE_Picnic_2021.JPG"
           title="SYDE"
         />
-        <CardContent>
+        <CardContent style={{ fontFamily: "Inter" }}>
           <p className={classes.text}>Lorem ipsum</p>
           <br />
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.

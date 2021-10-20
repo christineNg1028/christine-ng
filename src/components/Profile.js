@@ -84,7 +84,6 @@ const Profile = ({ classes, profile }) => {
           <br />
           <br /> {profile.description} <br />
           <br />
-          Read more here.
         </div>
       </Grid>
       <Grid container xs={5} justifyContent="center" alignItems="center">

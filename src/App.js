@@ -9,24 +9,38 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: { main: "#d8c7b5", dark: "#000", light: "#fff" },
+    secondary: { main: "#C1C1C1" },
+    background: { default: "#FAF4EB" },
+  },
+  typography: {
+    fontFamily: "'Inter', sans-serif",
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <Router basename="/">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/projects">
-            <Projects />
-          </Route>
-          <Redirect to="/404" />
-        </Switch>
-      </Router>
-      <Footer />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <NavBar />
+        <Router basename="/">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/projects">
+              <Projects />
+            </Route>
+            <Redirect to="/404" />
+          </Switch>
+        </Router>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

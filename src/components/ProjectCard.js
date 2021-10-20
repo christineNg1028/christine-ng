@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardActionArea, Chip, CardMedia, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
-import { tagColors } from "../collections/projects";
 import ReactCardFlip from "react-card-flip";
 import urlFor from "../imageBuilder.js";
 
@@ -12,7 +11,6 @@ const styles = () => ({
     width: "395px",
     height: "280px",
     textAlign: "left",
-    fontFamily: "Inter",
   },
   media: {
     height: "160px",
@@ -21,6 +19,22 @@ const styles = () => ({
 
 const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
   const [lightsOn, setLightsOn] = useState(false);
+  const tagColors = (tag) => {
+    switch (tag) {
+      case "Front End":
+        return "#CAFFED";
+      case "Web Dev":
+        return "#FFCADC";
+      case "UI Design":
+        return "#FFFCBF";
+      case "Mobile Dev":
+        return "#D0D2FF";
+      case "GUI Dev":
+        return "#FFCABC";
+      default:
+        return "#FAF4EB";
+    }
+  };
 
   return (
     <div style={{ position: "relative" }}>
@@ -49,7 +63,7 @@ const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
               image={urlFor(project.img).url()}
               title={project.title}
             />
-            <Box margin={1}>
+            <Box margin={1} style={{ fontFamily: "Inter" }}>
               <Box
                 display="flex"
                 alignItems="center"

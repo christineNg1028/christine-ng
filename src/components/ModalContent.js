@@ -7,7 +7,31 @@ import { FiPaperclip } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import urlFor from "../imageBuilder.js";
 
-const styles = () => ({});
+const styles = () => ({
+  container: {
+    textAlign: "left",
+    padding: 50,
+  },
+  image: {
+    opacity: 0.4,
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    borderRadius: 4,
+  },
+  description: {
+    lineHeight: "25px",
+  },
+  buttonWrapper: {
+    textAlign: "center",
+  },
+  projectLink: {
+    textDecoration: "none",
+  },
+});
 
 const ModalContent = ({ classes, project }) => {
   const fac = new FastAverageColor();
@@ -30,7 +54,7 @@ const ModalContent = ({ classes, project }) => {
   });
 
   return (
-    <Container style={{ textAlign: "left", padding: 50 }}>
+    <Container className={classes.container}>
       {project && (
         <>
           <Box
@@ -44,16 +68,7 @@ const ModalContent = ({ classes, project }) => {
           >
             <img
               src={urlFor(project.img).url()}
-              style={{
-                opacity: 0.4,
-                position: "absolute",
-                left: 0,
-                top: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: 4,
-              }}
+              className={classes.image}
               alt={project.title}
             />
             <Box sx={{ display: "flex" }}>
@@ -63,13 +78,13 @@ const ModalContent = ({ classes, project }) => {
           </Box>
           <br />
           <br />
-          <p style={{ lineHeight: "25px" }}>{project.description}</p>
+          <p className={classes.description}>{project.description}</p>
           <br />
-          <div w="100%" style={{ textAlign: "center" }}>
+          <div w="100%" className={classes.buttonWrapper}>
             <Link
               to={project.link}
               target="_blank"
-              style={{ textDecoration: "none" }}
+              className={classes.projectLink}
             >
               <Button
                 variant="contained"

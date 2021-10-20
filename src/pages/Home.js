@@ -10,7 +10,7 @@ import sanityClient from "../client.js";
 
 SwiperCore.use([Autoplay, Mousewheel]);
 
-const styles = () => ({
+const styles = (theme) => ({
   imagesContainer: {
     minHeight: 615,
     maxHeight: 1100,
@@ -180,7 +180,7 @@ const styles = () => ({
   },
 
   carouselSwiper: {
-    "--swiper-navigation-color": "#C1C1C1",
+    "--swiper-navigation-color": theme.palette.secondary.main,
   },
 
   carouselSwiperSlide: {
@@ -269,7 +269,7 @@ const Home = ({ classes }) => {
             Welcome to my creative outlet! <br />
             <br />
             This is where I share little snippets of my life through my
-            projects, photography, lifestyle blog, and journal.
+            projects, photography, and journal.
             <br />
             <br /> Scroll to get to know me :)
           </p>
