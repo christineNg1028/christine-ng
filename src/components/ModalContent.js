@@ -4,8 +4,7 @@ import { withStyles } from "@mui/styles";
 import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FiPaperclip } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import urlFor from "../imageBuilder.js";
+import { urlFor, getFileUrl } from "../utils.js";
 
 const styles = () => ({
   container: {
@@ -27,9 +26,6 @@ const styles = () => ({
   },
   buttonWrapper: {
     textAlign: "center",
-  },
-  projectLink: {
-    textDecoration: "none",
   },
 });
 
@@ -81,27 +77,23 @@ const ModalContent = ({ classes, project }) => {
           <p className={classes.description}>{project.description}</p>
           <br />
           <div w="100%" className={classes.buttonWrapper}>
-            <Link
-              to={project.link}
+            <Button
+              variant="contained"
+              size="large"
+              disableRipple
+              endIcon={<BsBoxArrowUpRight style={{ fontSize: "16px" }} />}
+              style={{
+                textTransform: "none",
+                backgroundColor: avgColor,
+                color: contrastColor,
+                border: `1px solid ${contrastColor}`,
+                opacity: 0.7,
+              }}
+              href={project.link}
               target="_blank"
-              className={classes.projectLink}
             >
-              <Button
-                variant="contained"
-                size="large"
-                disableRipple
-                endIcon={<BsBoxArrowUpRight style={{ fontSize: "16px" }} />}
-                style={{
-                  textTransform: "none",
-                  backgroundColor: avgColor,
-                  color: contrastColor,
-                  border: `1px solid ${contrastColor}`,
-                  opacity: 0.7,
-                }}
-              >
-                See Project
-              </Button>
-            </Link>
+              See Project
+            </Button>
           </div>
           <br />
           <Divider />
@@ -113,34 +105,40 @@ const ModalContent = ({ classes, project }) => {
               <br />
               {subProject.img && (
                 <img
-                  src={urlFor(subProject.img).width(600).url()}
+                  width="100%"
+                  src={urlFor(subProject.img).url()}
                   alt={subProject.title}
                 />
               )}
               {subProject.video && (
-                <iframe width="100%" height="315" src={subProject.video} />
+                <video width="100%" controls>
+                  <source
+                    src={getFileUrl(subProject.video.asset._ref)}
+                    type="video/mp4"
+                  />
+                </video>
               )}
               <br />
               <br />
               <p>{subProject.description}</p>
               <br />
               {subProject.link && (
-                <div w="100%" style={{ textAlign: "center" }}>
-                  <Link to={subProject.link} style={{ textDecoration: "none" }}>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      disableRipple
-                      endIcon={<FiPaperclip style={{ fontSize: "16px" }} />}
-                      style={{
-                        textTransform: "none",
-                        color: avgColor,
-                        border: `1px solid ${avgColor}`,
-                      }}
-                    >
-                      {subProject.title}
-                    </Button>
-                  </Link>
+                <div w="100%" className={classes.buttonWrapper}>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    disableRipple
+                    endIcon={<FiPaperclip style={{ fontSize: "16px" }} />}
+                    style={{
+                      textTransform: "none",
+                      color: avgColor,
+                      border: `1px solid ${avgColor}`,
+                    }}
+                    href={subProject.link}
+                    target="_blank"
+                  >
+                    {subProject.title}
+                  </Button>
                 </div>
               )}
               <br />

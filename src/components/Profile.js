@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
-import urlFor from "../imageBuilder.js";
+import { urlFor } from "../utils.js";
 
 const styles = () => ({
   profileContainer: {

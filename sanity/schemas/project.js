@@ -65,7 +65,7 @@ const project = {
             {
               title: "Video",
               name: "video",
-              type: "url",
+              type: "file",
             },
             {
               title: "Description",

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardActionArea, Chip, CardMedia, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ReactCardFlip from "react-card-flip";
-import urlFor from "../imageBuilder.js";
+import { urlFor } from "../utils.js";
 
 const styles = () => ({
   root: {
