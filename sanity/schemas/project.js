@@ -24,8 +24,13 @@ const project = {
       type: "text",
     },
     {
-      title: "Date",
-      name: "date",
+      title: "Start Date",
+      name: "startDate",
+      type: "date",
+    },
+    {
+      title: "End Date",
+      name: "endDate",
       type: "date",
     },
     {

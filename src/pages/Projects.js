@@ -19,12 +19,17 @@ const Projects = ({ classes }) => {
     sanityClient
       .fetch(`*[_type == "project"]`)
       .then((data) => {
-        setSoftwareAndUI(
-          data.filter(({ category }) => category === "Software & UI")
+        const sortedProjects = data.sort(
+          (a, b) => new Date(b.startDate) - new Date(a.startDate)
         );
-        setDesign(data.filter(({ category }) => category === "3D Design"));
+        setSoftwareAndUI(
+          sortedProjects.filter(({ category }) => category === "Software & UI")
+        );
+        setDesign(
+          sortedProjects.filter(({ category }) => category === "3D Design")
+        );
         setInProgress(
-          data.filter(({ category }) => category === "In Progress")
+          sortedProjects.filter(({ category }) => category === "In Progress")
         );
       })
       .catch(console.error);

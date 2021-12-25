@@ -17,24 +17,25 @@ const styles = () => ({
   },
 });
 
+const tagColors = (tag) => {
+  switch (tag) {
+    case "Front End":
+      return "#CAFFED";
+    case "Web Dev":
+      return "#FFCADC";
+    case "UI Design":
+      return "#FFFCBF";
+    case "Mobile Dev":
+      return "#D0D2FF";
+    case "GUI Dev":
+      return "#FFCABC";
+    default:
+      return "#FAF4EB";
+  }
+};
+
 const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
   const [lightsOn, setLightsOn] = useState(false);
-  const tagColors = (tag) => {
-    switch (tag) {
-      case "Front End":
-        return "#CAFFED";
-      case "Web Dev":
-        return "#FFCADC";
-      case "UI Design":
-        return "#FFFCBF";
-      case "Mobile Dev":
-        return "#D0D2FF";
-      case "GUI Dev":
-        return "#FFCABC";
-      default:
-        return "#FAF4EB";
-    }
-  };
 
   return (
     <div style={{ position: "relative" }}>
