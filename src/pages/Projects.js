@@ -7,13 +7,20 @@ import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import ModalContent from "../components/ModalContent";
 import sanityClient from "../client.js";
+import { useHistory } from "react-router-dom";
 
 const styles = () => ({});
 
-const Projects = ({ classes }) => {
+const Projects = (props) => {
   const [softwareAndUI, setSoftwareAndUI] = useState([]);
   const [design, setDesign] = useState([]);
   const [inProgress, setInProgress] = useState([]);
+
+  const history = useHistory();
+  const { id } = props.match.params;
+  const [showModal, setShowModal] = useState(false);
+  const [currentCard, setCurrentCard] = useState(null);
+  const [currentTab, setCurrentTab] = useState(0);
 
   useEffect(() => {
     sanityClient
@@ -33,7 +40,16 @@ const Projects = ({ classes }) => {
         );
       })
       .catch(console.error);
-  }, []);
+
+    if (id) {
+      sanityClient
+        .fetch(`*[_type == "project" && _id == "${id}"]`)
+        .then((data) => {
+          showProjectDetails(data[0]);
+        })
+        .catch(console.error);
+    }
+  }, [id]);
 
   const tabs = [
     {
@@ -50,18 +66,15 @@ const Projects = ({ classes }) => {
     },
   ];
 
-  const [showModal, setShowModal] = useState(false);
-  const [currentCard, setCurrentCard] = useState(null);
-  const [currentTab, setCurrentTab] = useState(0);
-
   const showProjectDetails = (project) => {
     setCurrentCard(project);
-    setTimeout(() => setShowModal(true), 150);
+    setShowModal(true);
   };
 
   const hideProjectDetails = () => {
+    history.push("/projects");
     setShowModal(false);
-    setTimeout(() => setCurrentCard(null), 150);
+    setCurrentCard(null);
   };
 
   const handleTabClick = (i) => {
@@ -82,11 +95,7 @@ const Projects = ({ classes }) => {
         <Grid container ref={tabs[0].ref} style={{ marginBottom: 75 }}>
           {softwareAndUI.map((project) => (
             <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard
-                project={project}
-                showProjectDetails={() => showProjectDetails(project)}
-                current={currentCard === project}
-              />
+              <ProjectCard project={project} current={project._id === id} />
             </Grid>
           ))}
         </Grid>
@@ -95,7 +104,6 @@ const Projects = ({ classes }) => {
             <Grid xs="auto" item style={{ padding: 50 }}>
               <ProjectCard
                 project={project}
-                showProjectDetails={() => showProjectDetails(project)}
                 current={currentCard === project}
               />
             </Grid>
@@ -109,7 +117,6 @@ const Projects = ({ classes }) => {
             <Grid xs="auto" item style={{ padding: 50 }}>
               <ProjectCard
                 project={project}
-                showProjectDetails={() => showProjectDetails(project)}
                 current={currentCard === project}
               />
             </Grid>

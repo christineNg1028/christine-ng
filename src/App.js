@@ -32,9 +32,11 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/projects">
-              <Projects />
-            </Route>
+            <Route
+              exact
+              path={["/projects", "/projects/:id"]}
+              render={(props) => <Projects {...props} />}
+            />
             <Redirect to="/404" />
           </Switch>
         </Router>

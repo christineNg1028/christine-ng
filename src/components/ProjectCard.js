@@ -3,6 +3,7 @@ import { Card, CardActionArea, Chip, CardMedia, Box } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ReactCardFlip from "react-card-flip";
 import { urlFor } from "../utils.js";
+import { useHistory } from "react-router-dom";
 
 const styles = () => ({
   root: {
@@ -34,8 +35,9 @@ const tagColors = (tag) => {
   }
 };
 
-const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
+const ProjectCard = ({ classes, project, current }) => {
   const [lightsOn, setLightsOn] = useState(false);
+  const history = useHistory();
 
   return (
     <div style={{ position: "relative" }}>
@@ -58,7 +60,10 @@ const ProjectCard = ({ classes, project, showProjectDetails, current }) => {
           onMouseEnter={() => setLightsOn(true)}
           onMouseLeave={() => setLightsOn(false)}
         >
-          <CardActionArea disableRipple onClick={() => showProjectDetails()}>
+          <CardActionArea
+            disableRipple
+            onClick={() => history.push(`/projects/${project._id}`)}
+          >
             <CardMedia
               className={classes.media}
               image={urlFor(project.img).url()}
