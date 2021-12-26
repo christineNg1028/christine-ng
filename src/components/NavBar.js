@@ -69,7 +69,12 @@ const NavBar = ({ classes }) => {
 
         <ul className={classes.navUl}>
           {tabs.map((tab) => (
-            <a className={classes.navItems} href={tab.url}>
+            <a
+              className={classes.navItems}
+              href={tab.url}
+              target={tab.name === "Resume" ? "_blank" : ""}
+              rel="noreferrer"
+            >
               <li>{tab.name}</li>
             </a>
           ))}
