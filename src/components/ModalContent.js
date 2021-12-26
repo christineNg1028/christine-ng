@@ -5,6 +5,7 @@ import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FiPaperclip } from "react-icons/fi";
 import { urlFor, getFileUrl } from "../utils.js";
+import BlockContent from "@sanity/block-content-to-react";
 
 const styles = () => ({
   container: {
@@ -159,7 +160,7 @@ const ModalContent = ({ classes, project }) => {
                 )}
                 <br />
                 <br />
-                <p>{subProject.description}</p>
+                <BlockContent blocks={subProject.description} />
                 <br />
                 {subProject.link && (
                   <div w="100%" className={classes.buttonWrapper}>
