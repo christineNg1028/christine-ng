@@ -102,10 +102,7 @@ const Projects = (props) => {
         <Grid container ref={tabs[1].ref} style={{ marginBottom: 75 }}>
           {design.map((project) => (
             <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard
-                project={project}
-                current={currentCard === project}
-              />
+              <ProjectCard project={project} current={project._id === id} />
             </Grid>
           ))}
         </Grid>
@@ -115,10 +112,7 @@ const Projects = (props) => {
         <Grid container ref={tabs[2].ref} style={{ marginBottom: 75 }}>
           {inProgress.map((project) => (
             <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard
-                project={project}
-                current={currentCard === project}
-              />
+              <ProjectCard project={project} current={project._id === id} />
             </Grid>
           ))}
         </Grid>
