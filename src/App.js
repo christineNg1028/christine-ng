@@ -4,17 +4,23 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Projects from "./pages/Projects";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Photography from "./pages/Photography";
+import Journal from "./pages/Journal";
 
 const theme = createTheme({
   palette: {
-    primary: { main: "#d8c7b5", dark: "#000", light: "#fff" },
+    primary: {
+      main: "#d8c7b5",
+      dark: "#000",
+      light: "#fff",
+      contrastText: "rgba(0, 0, 0, 0.72)",
+    },
     secondary: { main: "#C1C1C1" },
     background: { default: "#FAF4EB" },
   },
@@ -40,6 +46,9 @@ function App() {
             />
             <Route exact path="/photography">
               <Photography />
+            </Route>
+            <Route exact path="/journal">
+              <Journal />
             </Route>
             <Redirect to="/404" />
           </Switch>

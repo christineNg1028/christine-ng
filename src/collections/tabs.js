@@ -5,15 +5,15 @@ const tabs = [
   },
   {
     name: "Projects",
-    url: "#/projects",
+    url: "/projects",
   },
   {
     name: "Photography",
-    url: "#/photography",
+    url: "/photography",
   },
   {
     name: "Journal",
-    url: "",
+    url: "/journal",
   },
 ];
 
