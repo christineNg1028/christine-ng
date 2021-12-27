@@ -10,6 +10,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Photography from "./pages/Photography";
 
 const theme = createTheme({
   palette: {
@@ -37,6 +38,9 @@ function App() {
               path={["/projects", "/projects/:id"]}
               render={(props) => <Projects {...props} />}
             />
+            <Route exact path="/photography">
+              <Photography />
+            </Route>
             <Redirect to="/404" />
           </Switch>
         </Router>

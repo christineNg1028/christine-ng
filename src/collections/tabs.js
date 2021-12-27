@@ -9,7 +9,7 @@ const tabs = [
   },
   {
     name: "Photography",
-    url: "",
+    url: "#/photography",
   },
   {
     name: "Journal",
