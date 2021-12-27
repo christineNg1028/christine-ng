@@ -82,7 +82,11 @@ const ProjectCard = ({ classes, project, current }) => {
                     <Chip
                       size="small"
                       label={tag}
-                      style={{ margin: 3, backgroundColor: tagColors(tag) }}
+                      style={{
+                        margin: 3,
+                        backgroundColor: tagColors(tag),
+                        borderRadius: "4px",
+                      }}
                     />
                   ))}
                 </div>

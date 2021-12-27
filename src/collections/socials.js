@@ -22,7 +22,7 @@ const socials = [
   {
     name: "Email",
     icon: "/graphics/Email.svg",
-    url: "",
+    url: "mailto:christine.ng@uwaterloo.ca",
   },
 ];
 

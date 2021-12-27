@@ -1,13 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Container } from "@mui/material";
 import { withStyles } from "@mui/styles";
-import ProjectCard from "../components/ProjectCard";
-import SideNav from "../components/SideNav";
-import Rodal from "rodal";
-import "rodal/lib/rodal.css";
-import ModalContent from "../components/ModalContent";
 import sanityClient from "../client.js";
-import { useHistory } from "react-router-dom";
 import { urlFor } from "../utils.js";
 
 const styles = () => ({});
