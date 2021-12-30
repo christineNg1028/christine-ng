@@ -86,7 +86,7 @@ const NavBar = ({ classes }) => {
           {tabs.map((tab) => (
             <a
               className={
-                window.location.pathname === tab.url
+                window.location.pathname.includes(tab.url)
                   ? classes.navItemsSelected
                   : classes.navItems
               }
