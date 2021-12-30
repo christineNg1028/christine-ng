@@ -19,7 +19,7 @@ const Projects = (props) => {
   const history = useHistory();
   const { id } = props.match.params;
   const [showModal, setShowModal] = useState(false);
-  const [currentCard, setCurrentCard] = useState(null);
+  const [currentCard, setCurrentCard] = useState();
   const [currentTab, setCurrentTab] = useState(0);
 
   useEffect(() => {

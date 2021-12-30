@@ -13,7 +13,7 @@ const styles = () => ({
     padding: 50,
   },
   image: {
-    opacity: 0.4,
+    opacity: 0.5,
     position: "absolute",
     left: 0,
     top: 0,
@@ -62,17 +62,18 @@ const getDateText = (startDate, endDate) => {
 
 const ModalContent = ({ classes, project }) => {
   const fac = new FastAverageColor();
-  const [avgColor, setAvgColor] = useState("#000");
-  const [contrastColor, setContrastColor] = useState("#fff");
+  const [projectBtnColor, setProjectBtnColor] = useState("");
+  const [subProjectBtnColor, setSubProjectBtnColor] = useState("");
 
   useEffect(() => {
     if (project) {
       fac
         .getColorAsync(urlFor(project.img).url())
-        .then((color) => {
-          console.log(color.isLight);
-          setAvgColor(color.hex);
-          setContrastColor(color.isLight ? "#000" : "#fff");
+        .then(({ value, hex }) => {
+          setProjectBtnColor(
+            `rgba(${value[0]}, ${value[1]}, ${value[2]}, 0.5)`
+          );
+          setSubProjectBtnColor(hex);
         })
         .catch((e) => {
           console.log(e);
@@ -119,10 +120,9 @@ const ModalContent = ({ classes, project }) => {
                   endIcon={<BsBoxArrowUpRight style={{ fontSize: "16px" }} />}
                   style={{
                     textTransform: "none",
-                    backgroundColor: avgColor,
-                    color: contrastColor,
-                    border: `1px solid ${contrastColor}`,
-                    opacity: 0.7,
+                    backgroundColor: projectBtnColor,
+                    color: "rgba(0, 0, 0, 0.72)",
+                    border: "1px solid rgba(0, 0, 0, 0.72)",
                   }}
                   href={project.link}
                   target="_blank"
@@ -171,8 +171,8 @@ const ModalContent = ({ classes, project }) => {
                       endIcon={<FiPaperclip style={{ fontSize: "16px" }} />}
                       style={{
                         textTransform: "none",
-                        color: avgColor,
-                        border: `1px solid ${avgColor}`,
+                        color: subProjectBtnColor,
+                        border: `1px solid ${subProjectBtnColor}`,
                       }}
                       href={subProject.link}
                       target="_blank"

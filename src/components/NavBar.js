@@ -57,6 +57,21 @@ const styles = (theme) => ({
       transition: "ease-out 0.2s",
     },
   },
+
+  navItemsSelected: {
+    listStyle: "none",
+    width: "163px",
+    height: "55px",
+    marginTop: "15px",
+    backgroundImage: "url(/graphics/FolderTab.svg)",
+    backgroundPosition: "50% 0%",
+    backgroundSize: "175px",
+    textAlign: "center",
+    textDecoration: "none",
+    color: theme.palette.primary.main,
+    fontSize: "14px",
+    lineHeight: "50px",
+  },
 });
 
 const NavBar = ({ classes }) => {
@@ -70,7 +85,11 @@ const NavBar = ({ classes }) => {
         <ul className={classes.navUl}>
           {tabs.map((tab) => (
             <a
-              className={classes.navItems}
+              className={
+                window.location.pathname === tab.url
+                  ? classes.navItemsSelected
+                  : classes.navItems
+              }
               href={tab.url}
               target={tab.name === "Resume" ? "_blank" : ""}
               rel="noreferrer"
