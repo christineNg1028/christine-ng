@@ -16,7 +16,16 @@ const styles = () => ({
 });
 
 const Journal = ({ classes }) => {
-  useEffect(() => {}, []);
+  const [allEntries, setAllEntries] = useState([]);
+  useEffect(() => {
+    sanityClient
+      .fetch(`*[_type == "journalEntry"]`)
+      .then((data) => {
+        console.log(data);
+        setAllEntries(data);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <Container maxWidth="lg" style={{ padding: 100 }}>
@@ -35,12 +44,11 @@ const Journal = ({ classes }) => {
       <Grid container justifyContent="center" style={{ padding: 100 }}>
         <img src="/graphics/Quill.svg" />
       </Grid>
-      <Grid style={{ marginBottom: 50 }}>
-        <JournalCard classes={classes} />
-      </Grid>
-      <Grid style={{ marginBottom: 50 }}>
-        <JournalCard classes={classes} />
-      </Grid>
+      {allEntries.map((entry) => (
+        <Grid style={{ marginBottom: 50 }}>
+          <JournalCard classes={classes} entry={entry} />
+        </Grid>
+      ))}
     </Container>
   );
 };

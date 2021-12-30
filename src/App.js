@@ -12,6 +12,7 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Photography from "./pages/Photography";
 import Journal from "./pages/Journal";
+import JournalEntry from "./pages/JournalEntry";
 
 const theme = createTheme({
   palette: {
@@ -21,7 +22,7 @@ const theme = createTheme({
       light: "#fff",
       contrastText: "rgba(0, 0, 0, 0.72)",
     },
-    secondary: { main: "#C1C1C1" },
+    secondary: { main: "#C1C1C1", light: "#FFFCBF" },
     background: { default: "#FAF4EB" },
   },
   typography: {
@@ -50,6 +51,11 @@ function App() {
             <Route exact path="/journal">
               <Journal />
             </Route>
+            <Route
+              exact
+              path="/journal/:id"
+              render={(props) => <JournalEntry {...props} />}
+            />
             <Redirect to="/404" />
           </Switch>
         </Router>

@@ -19,9 +19,15 @@ const journalEntry = {
       type: "image",
     },
     {
-      title: "URL",
-      name: "url",
-      type: "url",
+      title: "Thought Bubble",
+      name: "thoughtBubble",
+      type: "image",
+    },
+    {
+      title: "Content",
+      name: "content",
+      type: "array",
+      of: [{ type: "block" }],
     },
   ],
 };
