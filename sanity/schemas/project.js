@@ -21,7 +21,8 @@ const project = {
     {
       title: "Description",
       name: "description",
-      type: "text",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
       title: "Start Date",
