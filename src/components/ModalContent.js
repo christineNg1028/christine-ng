@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Divider, Button } from "@mui/material";
+import { Container, Box, Divider, Button, IconButton } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
@@ -106,9 +106,6 @@ const ModalContent = ({ classes, project }) => {
               {getDateText(project.startDate, project.endDate)}
             </Box>
           </Box>
-          <br />
-          <br />
-          <p className={classes.description}>{project.description}</p>
           {project.link && (
             <>
               <br />
@@ -133,13 +130,28 @@ const ModalContent = ({ classes, project }) => {
             </>
           )}
           <br />
+          <BlockContent blocks={project.description} />
+          <br />
+          <br />
           <Divider />
           <br />
           <br />
           {project.subProjects &&
             project.subProjects.map((subProject) => (
-              <div>
-                <h2>{subProject.title}</h2>
+              <>
+                <h2>
+                  {subProject.title}
+                  {subProject.link && (
+                    <IconButton
+                      disableRipple
+                      href={subProject.link}
+                      target="_blank"
+                      style={{ color: subProjectBtnColor }}
+                    >
+                      <FiPaperclip />
+                    </IconButton>
+                  )}
+                </h2>
                 <br />
                 {subProject.img && (
                   <img
@@ -158,29 +170,8 @@ const ModalContent = ({ classes, project }) => {
                     />
                   </video>
                 )}
-                <br />
-                <br />
                 <BlockContent blocks={subProject.description} />
                 <br />
-                {subProject.link && (
-                  <div w="100%" className={classes.buttonWrapper}>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      disableRipple
-                      endIcon={<FiPaperclip style={{ fontSize: "16px" }} />}
-                      style={{
-                        textTransform: "none",
-                        color: subProjectBtnColor,
-                        border: `1px solid ${subProjectBtnColor}`,
-                      }}
-                      href={subProject.link}
-                      target="_blank"
-                    >
-                      {subProject.title}
-                    </Button>
-                  </div>
-                )}
                 <br />
                 {subProject.keyFeatures && (
                   <>
@@ -207,7 +198,7 @@ const ModalContent = ({ classes, project }) => {
                 )}
                 <br />
                 <br />
-              </div>
+              </>
             ))}
         </>
       )}
