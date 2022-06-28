@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Divider, Button, IconButton } from "@mui/material";
+import { Container, Box, Divider, Button } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
@@ -64,6 +64,7 @@ const ModalContent = ({ classes, project }) => {
   const fac = new FastAverageColor();
   const [projectBtnColor, setProjectBtnColor] = useState("");
   const [subProjectBtnColor, setSubProjectBtnColor] = useState("");
+  const [hoverSubProjectLink, setHoverSubProjectLink] = useState(false);
 
   useEffect(() => {
     if (project) {
@@ -139,19 +140,27 @@ const ModalContent = ({ classes, project }) => {
           {project.subProjects &&
             project.subProjects.map((subProject) => (
               <>
-                <h2>
-                  {subProject.title}
+                <Box
+                  sx={{ display: "flex" }}
+                  onMouseEnter={() => setHoverSubProjectLink(true)}
+                  onMouseLeave={() => setHoverSubProjectLink(false)}
+                >
+                  <h2
+                    style={{
+                      textDecoration: hoverSubProjectLink
+                        ? "underline"
+                        : "none",
+                    }}
+                  >
+                    {subProject.title}
+                  </h2>
                   {subProject.link && (
-                    <IconButton
-                      disableRipple
-                      href={subProject.link}
-                      target="_blank"
-                      style={{ color: subProjectBtnColor }}
-                    >
-                      <FiPaperclip />
-                    </IconButton>
+                    <FiPaperclip
+                      fontSize="large"
+                      style={{ color: subProjectBtnColor, margin: 5 }}
+                    />
                   )}
-                </h2>
+                </Box>
                 <br />
                 {subProject.img && (
                   <img

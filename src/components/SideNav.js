@@ -2,7 +2,7 @@ import React from "react";
 import { Stack } from "@mui/material";
 import { withStyles } from "@mui/styles";
 
-const styles = () => ({
+const styles = (theme) => ({
   sideNav: {
     position: "sticky",
     width: 160,
@@ -87,6 +87,13 @@ const styles = () => ({
     backgroundImage: "url(/graphics/Washi3Ext.svg)",
     width: 180,
   },
+  washiText: {
+    backgroundColor: "#fff",
+    borderRadius: 4,
+    padding: 2,
+    border: `1px solid ${theme.palette.primary.contrastText}`,
+    color: theme.palette.primary.contrastText,
+  },
 });
 
 const SideNav = ({ classes, tabs, currentTab, onTabClick }) => {
@@ -103,16 +110,7 @@ const SideNav = ({ classes, tabs, currentTab, onTabClick }) => {
                 : classes.washi3Ext
             }
           >
-            <p
-              style={{
-                backgroundColor: "#fff",
-                borderRadius: 4,
-                padding: 2,
-                color: "#d8c7b5",
-              }}
-            >
-              {tab.name}
-            </p>
+            <p className={classes.washiText}>{tab.name}</p>
           </span>
         ) : (
           <span
@@ -125,16 +123,7 @@ const SideNav = ({ classes, tabs, currentTab, onTabClick }) => {
             }
             onClick={() => onTabClick(i)}
           >
-            <p
-              style={{
-                backgroundColor: "#fff",
-                borderRadius: 4,
-                padding: 2,
-                color: "#d8c7b5",
-              }}
-            >
-              {tab.name}
-            </p>
+            <p className={classes.washiText}>{tab.name}</p>
           </span>
         )
       )}

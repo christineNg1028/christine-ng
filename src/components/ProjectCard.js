@@ -18,23 +18,6 @@ const styles = () => ({
   },
 });
 
-const tagColors = (tag) => {
-  switch (tag) {
-    case "Front End":
-      return "#CAFFED";
-    case "Web Dev":
-      return "#FFCADC";
-    case "UI Design":
-      return "#FFFCBF";
-    case "Mobile Dev":
-      return "#D0D2FF";
-    case "GUI Dev":
-      return "#FFCABC";
-    default:
-      return "#FAF4EB";
-  }
-};
-
 const ProjectCard = ({ classes, project, current }) => {
   const [lightsOn, setLightsOn] = useState(false);
   const history = useHistory();
@@ -84,7 +67,8 @@ const ProjectCard = ({ classes, project, current }) => {
                       label={tag}
                       style={{
                         margin: 3,
-                        backgroundColor: tagColors(tag),
+                        backgroundColor: "rgba(0, 0, 0, 0.72)",
+                        color: "#fff",
                         borderRadius: "4px",
                       }}
                     />
