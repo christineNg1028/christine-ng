@@ -11,7 +11,7 @@ const styles = () => ({
   profileImage: {
     width: "285px",
     height: "425px",
-    opacity: "75%",
+    opacity: "85%",
     transform: "matrix(0.98, 0.18, -0.18, 0.98, 0, 0)",
     position: "relative",
     objectFit: "cover",
@@ -31,17 +31,6 @@ const styles = () => ({
     right: 0,
     width: "35%",
     height: "35%",
-  },
-
-  profileImageL: {
-    width: "335px",
-    height: "475px",
-    opacity: "75%",
-    border: "25px solid white",
-    filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.1))",
-    transform: "rotate(-18.85deg)",
-    position: "relative",
-    objectFit: "none",
   },
 
   tapeLTL: {
@@ -74,13 +63,7 @@ const Profile = ({ classes, profile }) => {
     >
       <Grid container xs={5} justifyContent="center" alignItems="center">
         <div className={classes.textL}>
-          <span
-            style={{
-              background: `linear-gradient(180deg,rgba(255,255,255,0) 55%, ${profile.color} 55%)`,
-            }}
-          >
-            {profile.header}
-          </span>
+          <p className={classes.header}>{profile.header}</p>
           <br />
           <br /> {profile.description} <br />
           <br />

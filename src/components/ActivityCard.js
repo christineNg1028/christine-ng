@@ -4,7 +4,7 @@ import { withStyles } from "@mui/styles";
 
 const styles = () => ({
   root: {
-    padding: "20px 20px 0 20px",
+    padding: 20,
     borderRadius: 0,
     textAlign: "left",
   },
@@ -22,10 +22,19 @@ const ActivityCard = ({ classes }) => {
           image="/images/SYDE_Picnic_2021.JPG"
           title="SYDE"
         />
-        <CardContent style={{ fontFamily: "Inter" }}>
-          <p className={classes.text}>Lorem ipsum</p>
-          <br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <CardContent
+          style={{
+            fontFamily: "Inter",
+            fontSize: "16px",
+            padding: 0,
+            marginTop: 20,
+          }}
+        >
+          <p className={classes.text}>Projects page is now up!</p>
+          <p style={{ marginTop: 10, color: "#C1C1C1" }}>
+            Check it out here! Featuring a new post about my time as
+            Wealthsimple...
+          </p>
         </CardContent>
       </CardActionArea>
     </Card>

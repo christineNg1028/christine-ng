@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import SwiperCore, { Autoplay, Mousewheel } from "swiper";
 import sanityClient from "../client.js";
+import CurrentsCard from "../components/CurrentsCard";
 
 SwiperCore.use([Autoplay, Mousewheel]);
 
@@ -35,7 +36,7 @@ const styles = (theme) => ({
     width: "335px",
     marginTop: "-445px",
     marginLeft: "115px",
-    opacity: "75%",
+    opacity: "85%",
     border: "25px solid white",
     filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))",
     transform: "rotate(-13.1deg)",
@@ -70,7 +71,7 @@ const styles = (theme) => ({
     display: "block",
     width: "335px",
     marginTop: "-490px",
-    opacity: "75%",
+    opacity: "85%",
     border: "25px solid white",
     filter: "drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))",
     transform: "rotate(4.37deg)",
@@ -93,7 +94,7 @@ const styles = (theme) => ({
     position: "relative",
   },
 
-  header: { fontSize: 50 },
+  header: { fontSize: 36, textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)" },
 
   text: { fontSize: 20 },
 
@@ -148,7 +149,7 @@ const styles = (theme) => ({
 
   brushStroke1: {
     position: "absolute",
-    top: -55,
+    top: -40,
     left: -275,
     height: "160%",
     width: "200%",
@@ -172,9 +173,9 @@ const styles = (theme) => ({
 
   brushStroke2: {
     width: "150%",
-    height: "175%",
+    height: "250%",
     position: "absolute",
-    bottom: -25,
+    bottom: -35,
     left: -125,
     zIndex: -1,
   },
@@ -266,10 +267,8 @@ const Home = ({ classes }) => {
           <p className={classes.header}>Hey there 👋</p>
           <br />
           <p className={classes.text}>
-            Welcome to my creative outlet! <br />
-            <br />
-            This is where I share little snippets of my life through my
-            projects, photography, and journal.
+            Welcome to my creative outlet! This is where I share little snippets
+            of my life through my projects, photography, and journal.
             <br />
             <br /> Scroll to get to know me :)
           </p>
@@ -277,16 +276,7 @@ const Home = ({ classes }) => {
       </Grid>
       <Grid className={classes.profiles}>
         <Grid container justifyContent="center">
-          <Grid container xs={5} justifyContent="center">
-            <div className={classes.textL}>
-              <p className={classes.iAm}>
-                <br />
-                <br />
-                <br />
-                <br />I am...
-              </p>
-            </div>
-          </Grid>
+          <Grid container xs={5} justifyContent="center"></Grid>
           <Grid xs={5} container justifyContent="center" alignItems="center">
             <div className={classes.imgContainer}>
               <div className={classes.profileImageR} />
@@ -325,7 +315,7 @@ const Home = ({ classes }) => {
       </Grid>
       <Grid container justifyContent="center">
         <div className={classes.carouselHeader}>
-          <p className={classes.header}>What I've Been Up To ☕</p>
+          <p className={classes.header}>What I've Been Up To 🍵</p>
           <img
             className={classes.brushStroke2}
             src="/graphics/BrushStroke2.png"
@@ -341,7 +331,7 @@ const Home = ({ classes }) => {
           grabCursor={true}
         >
           <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
+            <CurrentsCard classes={classes} />
           </SwiperSlide>
           <SwiperSlide className={classes.carouselSwiperSlide}>
             <ActivityCard classes={classes} />
