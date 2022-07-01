@@ -142,16 +142,11 @@ const styles = (theme) => ({
     position: "relative",
   },
 
-  iAm: {
-    opacity: 0.3,
-    textShadow: "0px 2px 2px rgba(0, 0, 0, 0.5)",
-  },
-
   brushStroke1: {
     position: "absolute",
-    top: -40,
+    top: -65,
     left: -275,
-    height: "160%",
+    height: "200%",
     width: "200%",
     zIndex: -1,
   },
@@ -268,7 +263,7 @@ const Home = ({ classes }) => {
           <br />
           <p className={classes.text}>
             Welcome to my creative outlet! This is where I share little snippets
-            of my life through my projects, photography, and journal.
+            of my life.
             <br />
             <br /> Scroll to get to know me :)
           </p>
