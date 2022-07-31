@@ -19,16 +19,6 @@ const styles = (theme) => ({
     position: "absolute",
     left: "50px",
     top: "12px",
-    fontWeight: "normal",
-    fontSize: "24px",
-    textAlign: "center",
-    textDecoration: "none",
-    color: "rgba(0, 0, 0, 0.72)",
-    transition: "ease-out 0.2s",
-    "&:hover": {
-      textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-      transition: "ease-out 0.2s",
-    },
   },
 
   navUl: {
@@ -48,8 +38,8 @@ const styles = (theme) => ({
     textAlign: "center",
     textDecoration: "none",
     color: theme.palette.primary.main,
-    fontSize: "14px",
     lineHeight: "50px",
+    fontFamily: "Newsreader",
     transition: "ease-out 0.2s",
     "&:hover": {
       marginTop: "15px",
@@ -69,8 +59,8 @@ const styles = (theme) => ({
     textAlign: "center",
     textDecoration: "none",
     color: theme.palette.primary.main,
-    fontSize: "14px",
     lineHeight: "50px",
+    fontFamily: "Newsreader",
   },
 });
 

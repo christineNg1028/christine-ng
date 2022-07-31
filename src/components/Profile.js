@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import { urlFor } from "../utils.js";
 
-const styles = () => ({
+const styles = (theme) => ({
   profileContainer: {
     height: "100%",
   },
@@ -52,6 +52,18 @@ const styles = () => ({
   imgContainer: {
     position: "relative",
   },
+
+  readMore: {
+    fontStyle: "italic",
+    textDecoration: "none",
+    color: theme.palette.primary.contrastText,
+    background: `linear-gradient(to right, rgba(255,255,255,0) 50%, ${theme.palette.secondary.light} 50%)`,
+    backgroundSize: "200% auto",
+    transition: "background-position 0.2s ease-out",
+    "&:hover": {
+      backgroundPosition: "-99.99% 0",
+    },
+  },
 });
 
 const Profile = ({ classes, profile }) => {
@@ -67,6 +79,11 @@ const Profile = ({ classes, profile }) => {
           <br />
           <br /> {profile.description} <br />
           <br />
+          {profile.path && (
+            <a href={profile.path} className={classes.readMore}>
+              See my work {">"}
+            </a>
+          )}
         </div>
       </Grid>
       <Grid container xs={5} justifyContent="center" alignItems="center">

@@ -6,16 +6,11 @@ import { urlFor, getDateTimeText } from "../utils.js";
 import BlockContent from "@sanity/block-content-to-react";
 
 const styles = () => ({
-  introText: {
-    width: 555,
-  },
-
   header: {
-    fontSize: 50,
-    textAlign: "left",
+    fontFamily: "Newsreader",
+    fontSize: 30,
+    // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
   },
-
-  text: { fontSize: 20 },
 });
 
 const JournalEntry = ({ classes, match }) => {
@@ -33,7 +28,7 @@ const JournalEntry = ({ classes, match }) => {
 
   return entry ? (
     <>
-      <Container maxWidth="lg" style={{ paddingTop: 50 }}>
+      <Container maxWidth="md" style={{ paddingTop: 50 }}>
         <Grid container justifyContent="center">
           <img src={urlFor(entry.thoughtBubble).url()} width="100%" alt="" />
         </Grid>
@@ -46,10 +41,10 @@ const JournalEntry = ({ classes, match }) => {
           style={{ marginTop: 50 }}
         >
           <p className={classes.header}>{entry.title}</p>
-          <p className={classes.text}>{getDateTimeText(entry._createdAt)}</p>
+          <p>{getDateTimeText(entry._createdAt)}</p>
         </Grid>
         <Grid style={{ marginTop: 50 }} textAlign="left">
-          <p style={{ lineHeight: "30px", fontSize: 20 }}>
+          <p style={{ lineHeight: "30px" }}>
             <BlockContent blocks={entry.content} />
           </p>
         </Grid>

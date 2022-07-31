@@ -19,9 +19,9 @@ const profile = {
       type: "image",
     },
     {
-      title: "URL",
-      name: "url",
-      type: "url",
+      title: "Path",
+      name: "path",
+      type: "string",
     },
     {
       title: "Color",

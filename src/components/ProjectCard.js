@@ -59,7 +59,7 @@ const ProjectCard = ({ classes, project, current }) => {
                 justifyContent="space-between"
                 marginBottom={1}
               >
-                <p style={{ fontSize: 20 }}>{project.title}</p>
+                <p style={{ fontSize: 18 }}>{project.title}</p>
                 <div>
                   {project.tags.map((tag) => (
                     <Chip
@@ -75,7 +75,9 @@ const ProjectCard = ({ classes, project, current }) => {
                   ))}
                 </div>
               </Box>
-              <p style={{ fontSize: 14 }}>{project.subtitle}</p>
+              <p style={{ fontSize: 14, lineHeight: "18px" }}>
+                {project.subtitle}
+              </p>
             </Box>
           </CardActionArea>
         </Card>

@@ -66,7 +66,7 @@ const JournalCard = ({ classes, entry }) => {
             <p>{getDateTimeText(_createdAt)}</p>
           </Grid>
           <div className={classes.preview}>
-            <p style={{ lineHeight: "25px" }}>{contentPreview}</p>
+            <p style={{ lineHeight: "30px" }}>{contentPreview}</p>
             <div className={classes.previewOverlay} />
           </div>
         </Grid>

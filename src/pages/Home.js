@@ -90,13 +90,17 @@ const styles = (theme) => ({
   },
 
   introText: {
-    width: 525,
+    width: 500,
     position: "relative",
   },
 
-  header: { fontSize: 36, textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)" },
+  header: {
+    fontFamily: "Newsreader",
+    fontSize: 30,
+    // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
+  },
 
-  text: { fontSize: 20 },
+  text: { fontSize: 18 },
 
   profiles: {
     margin: "200px 0 200px 0",
@@ -105,9 +109,10 @@ const styles = (theme) => ({
   },
 
   textL: {
-    width: 500,
+    width: 520,
     textAlign: "left",
-    fontSize: 20,
+    fontSize: 18,
+    lineHeight: "30px",
   },
 
   profileImageR: {
@@ -144,7 +149,7 @@ const styles = (theme) => ({
 
   brushStroke1: {
     position: "absolute",
-    top: -65,
+    top: -60,
     left: -275,
     height: "200%",
     width: "200%",
@@ -167,11 +172,11 @@ const styles = (theme) => ({
   carousel: { position: "relative", marginBottom: 100 },
 
   brushStroke2: {
-    width: "150%",
-    height: "250%",
+    width: "100%",
+    height: "300%",
     position: "absolute",
-    bottom: -35,
-    left: -125,
+    bottom: -40,
+    left: 10,
     zIndex: -1,
   },
 
@@ -190,16 +195,37 @@ const styles = (theme) => ({
     left: 0,
     zIndex: 1,
   },
+
+  carouselCardHeader: {
+    fontSize: 18,
+    fontFamily: "Newsreader",
+  },
 });
 
 const Home = ({ classes }) => {
   const [profiles, setProfiles] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [currents, setCurrents] = useState([]);
 
   useEffect(() => {
     sanityClient
       .fetch(`*[_type == "profile"]`)
       .then((data) => {
         setProfiles(data);
+      })
+      .catch(console.error);
+
+    sanityClient
+      .fetch(`*[_type == "activity"]`)
+      .then((data) => {
+        setActivities(data);
+      })
+      .catch(console.error);
+
+    sanityClient
+      .fetch(`*[_type == "currents"]`)
+      .then((data) => {
+        setCurrents(data[0].currents);
       })
       .catch(console.error);
   }, []);
@@ -262,8 +288,8 @@ const Home = ({ classes }) => {
           <p className={classes.header}>Hey there 👋</p>
           <br />
           <p className={classes.text}>
-            Welcome to my creative outlet! This is where I share little snippets
-            of my life.
+            Welcome to my creative outlet! <br />
+            This is where I share little snippets of my life.
             <br />
             <br /> Scroll to get to know me :)
           </p>
@@ -310,7 +336,7 @@ const Home = ({ classes }) => {
       </Grid>
       <Grid container justifyContent="center">
         <div className={classes.carouselHeader}>
-          <p className={classes.header}>What I've Been Up To 🍵</p>
+          <p className={classes.header}>Hot off the press 🍵</p>
           <img
             className={classes.brushStroke2}
             src="/graphics/BrushStroke2.png"
@@ -322,33 +348,17 @@ const Home = ({ classes }) => {
         <Swiper
           className={classes.carouselSwiper}
           slidesPerView={3}
-          navigation={true}
+          navigation={false}
           grabCursor={true}
         >
           <SwiperSlide className={classes.carouselSwiperSlide}>
-            <CurrentsCard classes={classes} />
+            <CurrentsCard classes={classes} currents={currents} />
           </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <ActivityCard classes={classes} />
-          </SwiperSlide>
+          {activities.map((activity, key) => (
+            <SwiperSlide className={classes.carouselSwiperSlide}>
+              <ActivityCard classes={classes} activity={activity} />
+            </SwiperSlide>
+          ))}
         </Swiper>
         <img
           className={classes.carouselWire}

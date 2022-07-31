@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { withStyles } from "@mui/styles";
+import { urlFor } from "../utils.js";
 
 const styles = () => ({
   root: {
@@ -13,27 +14,32 @@ const styles = () => ({
   },
 });
 
-const ActivityCard = ({ classes }) => {
+const ActivityCard = ({ classes, activity }) => {
   return (
     <Card className={classes.root}>
-      <CardActionArea disableRipple>
+      <CardActionArea disableRipple href={activity.url}>
         <CardMedia
           className={classes.media}
-          image="/images/SYDE_Picnic_2021.JPG"
-          title="SYDE"
+          image={urlFor(activity.img).url()}
+          title={activity.title}
         />
         <CardContent
           style={{
             fontFamily: "Inter",
-            fontSize: "16px",
             padding: 0,
             marginTop: 20,
           }}
         >
-          <p className={classes.text}>Projects page is now up!</p>
-          <p style={{ marginTop: 10, color: "#C1C1C1" }}>
-            Check it out here! Featuring a new post about my time as
-            Wealthsimple...
+          <p className={classes.carouselCardHeader}>{activity.title}</p>
+          <p
+            style={{
+              marginTop: 10,
+              color: "#C1C1C1",
+              fontSize: 14,
+              lineHeight: "18px",
+            }}
+          >
+            {activity.subtitle}
           </p>
         </CardContent>
       </CardActionArea>

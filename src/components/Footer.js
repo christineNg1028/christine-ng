@@ -10,6 +10,7 @@ const styles = (theme) => ({
     borderTop: `2px solid ${theme.palette.primary.main}`,
     paddingLeft: 50,
     paddingRight: 50,
+    fontFamily: "Newsreader",
   },
   socials: {
     display: "flex",

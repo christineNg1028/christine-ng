@@ -23,7 +23,7 @@ const styles = () => ({
     borderRadius: 4,
   },
   description: {
-    lineHeight: "25px",
+    lineHeight: "30px",
   },
   buttonWrapper: {
     textAlign: "center",

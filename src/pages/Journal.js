@@ -7,12 +7,16 @@ import JournalCard from "../components/JournalCard.js";
 
 const styles = () => ({
   introText: {
-    width: 525,
+    width: 500,
   },
 
-  header: { fontSize: 36, textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)" },
+  header: {
+    fontFamily: "Newsreader",
+    fontSize: 30,
+    // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
+  },
 
-  text: { fontSize: 20 },
+  text: { fontSize: 18 },
 });
 
 const Journal = ({ classes }) => {
