@@ -17,38 +17,6 @@ const styles = (theme) => ({
     objectFit: "cover",
   },
 
-  tapeRTL: {
-    position: "absolute",
-    top: -100,
-    left: -10,
-    width: "35%",
-    height: "35%",
-  },
-
-  tapeRBR: {
-    position: "absolute",
-    bottom: -92,
-    right: 0,
-    width: "35%",
-    height: "35%",
-  },
-
-  tapeLTL: {
-    position: "absolute",
-    top: -52,
-    left: -140,
-    width: "50%",
-    height: "50%",
-  },
-
-  tapeLBR: {
-    position: "absolute",
-    bottom: -48,
-    right: -140,
-    width: "50%",
-    height: "50%",
-  },
-
   imgContainer: {
     position: "relative",
   },

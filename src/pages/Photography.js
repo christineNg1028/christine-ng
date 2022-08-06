@@ -4,9 +4,15 @@ import { withStyles } from "@mui/styles";
 import sanityClient from "../client.js";
 import { urlFor } from "../utils.js";
 
-const styles = () => ({});
+const styles = () => ({
+  photo: {
+    objectFit: "contain",
+    maxWidth: "95%",
+    filter: "drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.20))",
+  },
+});
 
-const Photography = (props) => {
+const Photography = ({ classes }) => {
   const [allPhotos, setAllPhotos] = useState([]);
 
   useEffect(() => {
@@ -42,7 +48,7 @@ const Photography = (props) => {
             <>
               <Grid container xs={6}>
                 <img
-                  style={{ objectFit: "contain", maxWidth: "95%" }}
+                  className={classes.photo}
                   height="425px"
                   src={group[0]}
                   alt=""
@@ -50,7 +56,7 @@ const Photography = (props) => {
               </Grid>
               <Grid container xs={4}>
                 <img
-                  style={{ objectFit: "contain", maxWidth: "95%" }}
+                  className={classes.photo}
                   width="85%"
                   height="425px"
                   src={group[1]}
@@ -62,7 +68,7 @@ const Photography = (props) => {
             <>
               <Grid container xs={4} justifyContent="flex-end">
                 <img
-                  style={{ objectFit: "contain", maxWidth: "95%" }}
+                  className={classes.photo}
                   width="85%"
                   height="425px"
                   src={group[0]}
@@ -71,7 +77,7 @@ const Photography = (props) => {
               </Grid>
               <Grid container xs={6} justifyContent="flex-end">
                 <img
-                  style={{ objectFit: "contain", maxWidth: "95%" }}
+                  className={classes.photo}
                   height="425px"
                   src={group[1]}
                   alt=""
