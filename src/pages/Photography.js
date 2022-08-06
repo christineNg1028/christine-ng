@@ -13,13 +13,15 @@ const Photography = (props) => {
     sanityClient
       .fetch(`*[_type == "photography"]`)
       .then((data) => {
-        const photoSources = data.reduce((acc, current) => {
-          // get photos from current series
-          const photoSeries = current.photos;
-          // loop through each photo, get the url and push it to acc
-          photoSeries.forEach((photo) => acc.push(urlFor(photo).url()));
-          return acc;
-        }, []);
+        const photoSources = data
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .reduce((acc, current) => {
+            // get photos from current series
+            const photoSeries = current.photos;
+            // loop through each photo, get the url and push it to acc
+            photoSeries.forEach((photo) => acc.push(urlFor(photo).url()));
+            return acc;
+          }, []);
         const photoGroups = photoSources.reduce((acc, current, i) => {
           // if even index, use slice to create new subarray
           if (i % 2 === 0) {
