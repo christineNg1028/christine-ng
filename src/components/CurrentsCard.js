@@ -10,7 +10,6 @@ const styles = () => ({
     borderRadius: 0,
     textAlign: "left",
     filter: "drop-shadow(10px 15px 5px rgba(0, 0, 0, 0.20))",
-    fontFamily: "Newsreader",
   },
 });
 
@@ -22,7 +21,7 @@ const CurrentsCard = ({ classes, currents }) => {
           <br />
           <Grid container alignItems="end" style={{ lineHeight: "30px" }}>
             <p className={classes.carouselCardHeader}>{prompt}...</p>
-            <p style={{ marginLeft: 10, fontSize: 16 }}>{answer}</p>
+            <p style={{ marginLeft: 5, fontSize: 14 }}>{answer}</p>
           </Grid>
         </>
       ))}

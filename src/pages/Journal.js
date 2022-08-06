@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Container, Paper } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import sanityClient from "../client.js";
-import { urlFor } from "../utils.js";
 import JournalCard from "../components/JournalCard.js";
 
 const styles = () => ({
-  introText: {
-    width: 500,
-  },
-
   header: {
     fontFamily: "Newsreader",
     fontSize: 30,
     // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
   },
-
-  text: { fontSize: 18 },
 });
 
 const Journal = ({ classes }) => {
@@ -34,10 +27,10 @@ const Journal = ({ classes }) => {
   return (
     <Container maxWidth="lg" style={{ padding: 100 }}>
       <Grid container justifyContent="center">
-        <div className={classes.introText}>
+        <div>
           <p className={classes.header}>Welcome to my journal</p>
           <br />
-          <p className={classes.text}>
+          <p>
             Here, I write freely about my experiences, things I’ve learned,
             think about, dream of...
             <br />

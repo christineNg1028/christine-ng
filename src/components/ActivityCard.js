@@ -26,7 +26,6 @@ const ActivityCard = ({ classes, activity }) => {
         />
         <CardContent
           style={{
-            fontFamily: "Inter",
             padding: 0,
             marginTop: 20,
           }}

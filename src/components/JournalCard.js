@@ -10,7 +10,6 @@ const styles = (theme) => ({
     backgroundSize: "cover",
     width: "100%",
     filter: "drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.20))",
-    fontFamily: "Newsreader",
   },
   previewOverlay: {
     position: "absolute",
@@ -24,7 +23,7 @@ const styles = (theme) => ({
     position: "relative",
   },
   readMore: {
-    fontFamily: "Inter",
+    fontSize: 14,
     fontStyle: "italic",
     textDecoration: "none",
     color: theme.palette.primary.contrastText,
@@ -66,10 +65,10 @@ const JournalCard = ({ classes, entry }) => {
             style={{ marginBottom: 25 }}
           >
             <p className={classes.text}>{title}</p>
-            <p style={{ fontFamily: "Inter" }}>{getDateTimeText(_createdAt)}</p>
+            <p style={{ fontSize: 14 }}>{getDateTimeText(_createdAt)}</p>
           </Grid>
           <div className={classes.preview}>
-            <p style={{ lineHeight: "30px", fontSize: 16 }}>{contentPreview}</p>
+            <p style={{ lineHeight: "30px", fontSize: 14 }}>{contentPreview}</p>
             <div className={classes.previewOverlay} />
           </div>
         </Grid>

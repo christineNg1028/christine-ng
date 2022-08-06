@@ -19,7 +19,6 @@ const styles = () => ({
     borderRadius: 0,
     textAlign: "left",
     filter: "drop-shadow(10px 15px 5px rgba(0, 0, 0, 0.20))",
-    fontFamily: "Newsreader",
     lineHeight: "25px",
   },
 });
@@ -37,7 +36,7 @@ const NoteCard = ({ classes, note }) => {
       <p
         style={{
           marginTop: 10,
-          fontSize: 16,
+          fontSize: 14,
         }}
       >
         <BlockContent blocks={note.content} />

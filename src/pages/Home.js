@@ -101,8 +101,6 @@ const styles = (theme) => ({
     // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
   },
 
-  text: { fontSize: 18 },
-
   profiles: {
     margin: "200px 0 200px 0",
     height: "532px",
@@ -110,9 +108,8 @@ const styles = (theme) => ({
   },
 
   textL: {
-    width: 520,
+    width: 501,
     textAlign: "left",
-    fontSize: 18,
     lineHeight: "30px",
   },
 
@@ -150,7 +147,7 @@ const styles = (theme) => ({
 
   brushStroke1: {
     position: "absolute",
-    top: -60,
+    top: -55,
     left: -275,
     height: "200%",
     width: "200%",
@@ -199,7 +196,8 @@ const styles = (theme) => ({
   },
 
   carouselCardHeader: {
-    fontSize: 18,
+    fontSize: 14,
+    fontWeight: 600,
   },
 });
 
@@ -290,7 +288,7 @@ const Home = ({ classes }) => {
           />
           <p className={classes.header}>Hey there 👋</p>
           <br />
-          <p className={classes.text}>
+          <p>
             Welcome to my creative outlet! <br />
             This is where I share little snippets of my life.
             <br />
