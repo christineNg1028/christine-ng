@@ -8,6 +8,7 @@ const styles = () => ({
     padding: 20,
     borderRadius: 0,
     textAlign: "left",
+    filter: "drop-shadow(10px 15px 5px rgba(0, 0, 0, 0.20))",
   },
   media: {
     height: 275,
@@ -34,7 +35,6 @@ const ActivityCard = ({ classes, activity }) => {
           <p
             style={{
               marginTop: 10,
-              color: "#C1C1C1",
               fontSize: 14,
               lineHeight: "18px",
             }}

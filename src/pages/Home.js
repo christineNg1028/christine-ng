@@ -8,6 +8,7 @@ import "swiper/swiper-bundle.css";
 import SwiperCore, { Autoplay, Mousewheel } from "swiper";
 import sanityClient from "../client.js";
 import CurrentsCard from "../components/CurrentsCard";
+import NoteCard from "../components/NoteCard";
 
 SwiperCore.use([Autoplay, Mousewheel]);
 
@@ -164,12 +165,12 @@ const styles = (theme) => ({
   },
 
   carouselHeader: {
-    marginBottom: 100,
+    marginBottom: 150,
     position: "relative",
     width: 600,
   },
 
-  carousel: { position: "relative", marginBottom: 100 },
+  carousel: { position: "relative", marginBottom: 15 },
 
   brushStroke2: {
     width: "100%",
@@ -182,6 +183,7 @@ const styles = (theme) => ({
 
   carouselSwiper: {
     "--swiper-navigation-color": theme.palette.secondary.main,
+    minHeight: 500,
   },
 
   carouselSwiperSlide: {
@@ -198,7 +200,6 @@ const styles = (theme) => ({
 
   carouselCardHeader: {
     fontSize: 18,
-    fontFamily: "Newsreader",
   },
 });
 
@@ -206,6 +207,7 @@ const Home = ({ classes }) => {
   const [profiles, setProfiles] = useState([]);
   const [activities, setActivities] = useState([]);
   const [currents, setCurrents] = useState([]);
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     sanityClient
@@ -226,6 +228,13 @@ const Home = ({ classes }) => {
       .fetch(`*[_type == "currents"]`)
       .then((data) => {
         setCurrents(data[0].currents);
+      })
+      .catch(console.error);
+
+    sanityClient
+      .fetch(`*[_type == "note"]`)
+      .then((data) => {
+        setNotes(data);
       })
       .catch(console.error);
   }, []);
@@ -357,6 +366,11 @@ const Home = ({ classes }) => {
           {activities.map((activity, key) => (
             <SwiperSlide className={classes.carouselSwiperSlide}>
               <ActivityCard classes={classes} activity={activity} />
+            </SwiperSlide>
+          ))}
+          {notes.map((note, key) => (
+            <SwiperSlide className={classes.carouselSwiperSlide}>
+              <NoteCard classes={classes} note={note} />
             </SwiperSlide>
           ))}
         </Swiper>
