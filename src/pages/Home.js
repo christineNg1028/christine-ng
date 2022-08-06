@@ -205,9 +205,8 @@ const styles = (theme) => ({
 
 const Home = ({ classes }) => {
   const [profiles, setProfiles] = useState([]);
-  const [activities, setActivities] = useState([]);
+  const [carouselSlides, setCarouselSlides] = useState([]);
   const [currents, setCurrents] = useState([]);
-  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     sanityClient
@@ -218,9 +217,11 @@ const Home = ({ classes }) => {
       .catch(console.error);
 
     sanityClient
-      .fetch(`*[_type == "activity"]`)
+      .fetch(`*[_type == "activity" || _type == "note"]`)
       .then((data) => {
-        setActivities(data);
+        setCarouselSlides(
+          data.sort((a, b) => new Date(b._createdAt) - new Date(a._createdAt))
+        );
       })
       .catch(console.error);
 
@@ -228,13 +229,6 @@ const Home = ({ classes }) => {
       .fetch(`*[_type == "currents"]`)
       .then((data) => {
         setCurrents(data[0].currents);
-      })
-      .catch(console.error);
-
-    sanityClient
-      .fetch(`*[_type == "note"]`)
-      .then((data) => {
-        setNotes(data);
       })
       .catch(console.error);
   }, []);
@@ -363,14 +357,13 @@ const Home = ({ classes }) => {
           <SwiperSlide className={classes.carouselSwiperSlide}>
             <CurrentsCard classes={classes} currents={currents} />
           </SwiperSlide>
-          {activities.map((activity, key) => (
+          {carouselSlides.map((slide, key) => (
             <SwiperSlide className={classes.carouselSwiperSlide}>
-              <ActivityCard classes={classes} activity={activity} />
-            </SwiperSlide>
-          ))}
-          {notes.map((note, key) => (
-            <SwiperSlide className={classes.carouselSwiperSlide}>
-              <NoteCard classes={classes} note={note} />
+              {slide._type === "activity" ? (
+                <ActivityCard classes={classes} activity={slide} />
+              ) : (
+                <NoteCard classes={classes} note={slide} />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
