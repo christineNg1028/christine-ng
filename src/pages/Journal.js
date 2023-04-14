@@ -8,7 +8,6 @@ const styles = () => ({
   header: {
     fontFamily: "Newsreader",
     fontSize: 30,
-    // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
   },
 });
 
@@ -18,8 +17,9 @@ const Journal = ({ classes }) => {
     sanityClient
       .fetch(`*[_type == "journalEntry"]`)
       .then((data) => {
-        console.log(data);
-        setAllEntries(data);
+        setAllEntries(
+          data.sort((a, b) => new Date(b._createdAt) - new Date(a._createdAt))
+        );
       })
       .catch(console.error);
   }, []);
@@ -28,14 +28,9 @@ const Journal = ({ classes }) => {
     <Container maxWidth="lg" style={{ padding: 100 }}>
       <Grid container justifyContent="center">
         <div>
-          <p className={classes.header}>Welcome to my journal</p>
+          <p className={classes.header}>Welcome to brain dump central 💭</p>
           <br />
-          <p>
-            Here, I write freely about my experiences, things I’ve learned,
-            think about, dream of...
-            <br />
-            <br /> Enjoy :)
-          </p>
+          <p>Enjoy :)</p>
         </div>
       </Grid>
       <Grid container justifyContent="center" style={{ padding: 100 }}>

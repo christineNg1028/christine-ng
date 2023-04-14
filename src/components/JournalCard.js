@@ -22,7 +22,7 @@ const styles = (theme) => ({
   preview: {
     position: "relative",
   },
-  readMore: {
+  continue: {
     fontSize: 14,
     fontStyle: "italic",
     textDecoration: "none",
@@ -73,8 +73,8 @@ const JournalCard = ({ classes, entry }) => {
           </div>
         </Grid>
         <Grid item textAlign="right" width="100%">
-          <a href={`/journal/${_id}`} className={classes.readMore}>
-            Read more {">"}
+          <a href={`/journal/${_id}`} className={classes.continue}>
+            Continue reading {">"}
           </a>
         </Grid>
       </Grid>
