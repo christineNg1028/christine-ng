@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Divider, Button } from "@mui/material";
+import { Container, Box, Divider, IconButton } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import FastAverageColor from "fast-average-color";
 import { BsBoxArrowUpRight } from "react-icons/bs";
-import { FiPaperclip } from "react-icons/fi";
 import { urlFor, getFileUrl } from "../utils.js";
 import BlockContent from "@sanity/block-content-to-react";
 
@@ -62,19 +61,14 @@ const getDateText = (startDate, endDate) => {
 
 const ModalContent = ({ classes, project }) => {
   const fac = new FastAverageColor();
-  const [projectBtnColor, setProjectBtnColor] = useState("");
-  const [subProjectBtnColor, setSubProjectBtnColor] = useState("");
-  const [hoverSubProjectLink, setHoverSubProjectLink] = useState(false);
+  const [projectColor, setProjectColor] = useState("");
 
   useEffect(() => {
     if (project) {
       fac
         .getColorAsync(urlFor(project.img).url())
         .then(({ value, hex }) => {
-          setProjectBtnColor(
-            `rgba(${value[0]}, ${value[1]}, ${value[2]}, 0.5)`
-          );
-          setSubProjectBtnColor(hex);
+          setProjectColor(`rgba(${value[0]}, ${value[1]}, ${value[2]}, 0.5)`);
         })
         .catch((e) => {
           console.log(e);
@@ -93,43 +87,28 @@ const ModalContent = ({ classes, project }) => {
               alignItems: "center",
               padding: 5,
               position: "relative",
+              backgroundColor: projectColor,
+              borderRadius: "4px",
             }}
           >
-            <img
-              src={urlFor(project.img).url()}
-              className={classes.image}
-              alt={project.title}
-            />
-            <Box sx={{ display: "flex" }}>
-              <h1>{project.title}</h1>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <h1 style={{ marginRight: 5 }}>{project.title}</h1>
+              {project.link && (
+                <>
+                  <br />
+                  <div w="100%" className={classes.buttonWrapper}>
+                    <IconButton href={project.link} target="_blank">
+                      <BsBoxArrowUpRight fontSize="large" />
+                    </IconButton>
+                  </div>
+                </>
+              )}
             </Box>
             <Box sx={{ fontWeight: "bold" }}>
               {getDateText(project.startDate, project.endDate)}
             </Box>
           </Box>
-          {project.link && (
-            <>
-              <br />
-              <div w="100%" className={classes.buttonWrapper}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  disableRipple
-                  endIcon={<BsBoxArrowUpRight style={{ fontSize: "16px" }} />}
-                  style={{
-                    textTransform: "none",
-                    backgroundColor: projectBtnColor,
-                    color: "rgba(0, 0, 0, 0.72)",
-                    border: "1px solid rgba(0, 0, 0, 0.72)",
-                  }}
-                  href={project.link}
-                  target="_blank"
-                >
-                  See Project
-                </Button>
-              </div>
-            </>
-          )}
+          <br />
           <br />
           <BlockContent blocks={project.description} />
           <br />
@@ -140,25 +119,12 @@ const ModalContent = ({ classes, project }) => {
           {project.subProjects &&
             project.subProjects.map((subProject) => (
               <>
-                <Box
-                  sx={{ display: "flex" }}
-                  onMouseEnter={() => setHoverSubProjectLink(true)}
-                  onMouseLeave={() => setHoverSubProjectLink(false)}
-                >
-                  <h2
-                    style={{
-                      textDecoration: hoverSubProjectLink
-                        ? "underline"
-                        : "none",
-                    }}
-                  >
-                    {subProject.title}
-                  </h2>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <h2 style={{ marginRight: 5 }}>{subProject.title}</h2>
                   {subProject.link && (
-                    <FiPaperclip
-                      fontSize="large"
-                      style={{ color: subProjectBtnColor, margin: 5 }}
-                    />
+                    <IconButton href={subProject.link} target="_blank">
+                      <BsBoxArrowUpRight fontSize="large" />
+                    </IconButton>
                   )}
                 </Box>
                 <br />
@@ -179,6 +145,8 @@ const ModalContent = ({ classes, project }) => {
                     />
                   </video>
                 )}
+                <br />
+                <br />
                 <BlockContent blocks={subProject.description} />
                 <br />
                 <br />

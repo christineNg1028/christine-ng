@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { withStyles } from "@mui/styles";
 import ProjectCard from "../components/ProjectCard";
-import SideNav from "../components/SideNav";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import ModalContent from "../components/ModalContent";
@@ -12,15 +11,11 @@ import { useHistory } from "react-router-dom";
 const styles = () => ({});
 
 const Projects = (props) => {
-  const [softwareAndUI, setSoftwareAndUI] = useState([]);
-  const [design, setDesign] = useState([]);
-  const [inProgress, setInProgress] = useState([]);
-
+  const [projects, setProjects] = useState([]);
   const history = useHistory();
   const { id } = props.match.params;
   const [showModal, setShowModal] = useState(false);
   const [currentCard, setCurrentCard] = useState();
-  const [currentTab, setCurrentTab] = useState(0);
 
   useEffect(() => {
     sanityClient
@@ -29,14 +24,8 @@ const Projects = (props) => {
         const sortedProjects = data.sort(
           (a, b) => new Date(b.startDate) - new Date(a.startDate)
         );
-        setSoftwareAndUI(
+        setProjects(
           sortedProjects.filter(({ category }) => category === "Software & UI")
-        );
-        setDesign(
-          sortedProjects.filter(({ category }) => category === "3D Design")
-        );
-        setInProgress(
-          sortedProjects.filter(({ category }) => category === "In Progress")
         );
       })
       .catch(console.error);
@@ -51,21 +40,6 @@ const Projects = (props) => {
     }
   }, [id]);
 
-  const tabs = [
-    {
-      name: "Software & UI",
-      ref: useRef(null),
-    },
-    {
-      name: "3D Design",
-      ref: useRef(null),
-    },
-    {
-      name: "In Progress",
-      ref: useRef(null),
-    },
-  ];
-
   const showProjectDetails = (project) => {
     setCurrentCard(project);
     setShowModal(true);
@@ -77,45 +51,14 @@ const Projects = (props) => {
     setCurrentCard(null);
   };
 
-  const handleTabClick = (i) => {
-    tabs[i].ref.current.scrollIntoView({ behavior: "smooth" });
-    setCurrentTab(i);
-  };
-
   return (
-    <Grid container xs={12}>
-      <Grid xs={1}>
-        <SideNav
-          tabs={tabs}
-          currentTab={currentTab}
-          onTabClick={handleTabClick}
-        />
-      </Grid>
-      <Grid container xs={11} style={{ padding: 50 }}>
-        <Grid container ref={tabs[0].ref} style={{ marginBottom: 75 }}>
-          {softwareAndUI.map((project) => (
-            <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard project={project} current={project._id === id} />
-            </Grid>
-          ))}
-        </Grid>
-        <Grid container ref={tabs[1].ref} style={{ marginBottom: 75 }}>
-          {design.map((project) => (
-            <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard project={project} current={project._id === id} />
-            </Grid>
-          ))}
-        </Grid>
-        <br />
-        <br />
-        <br />
-        <Grid container ref={tabs[2].ref} style={{ marginBottom: 75 }}>
-          {inProgress.map((project) => (
-            <Grid xs="auto" item style={{ padding: 50 }}>
-              <ProjectCard project={project} current={project._id === id} />
-            </Grid>
-          ))}
-        </Grid>
+    <Grid container style={{ padding: 50 }}>
+      <Grid container justifyContent="center" style={{ marginBottom: 75 }}>
+        {projects.map((project) => (
+          <Grid xs="auto" item style={{ padding: 50 }}>
+            <ProjectCard project={project} current={project._id === id} />
+          </Grid>
+        ))}
       </Grid>
 
       <Rodal
