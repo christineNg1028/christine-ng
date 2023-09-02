@@ -24,6 +24,11 @@ const socials = [
     icon: "/graphics/Instagram.svg",
     url: "https://www.instagram.com/_chrixtine_/",
   },
+  {
+    name: "Spotify",
+    icon: "/graphics/Spotify.svg",
+    url: "https://open.spotify.com/user/226qigv3jmw2ffwpuutbbanoq?si=67d9b559f45b4f41",
+  },
 ];
 
 export default socials;

@@ -8,6 +8,7 @@ const styles = () => ({
   header: {
     fontFamily: "Newsreader",
     fontSize: 30,
+    marginBottom: "50px"
   },
 });
 
@@ -26,15 +27,11 @@ const Journal = ({ classes }) => {
 
   return (
     <Container maxWidth="lg" style={{ padding: 100 }}>
-      <Grid container justifyContent="center">
-        <div>
-          <p className={classes.header}>Welcome to brain dump central 💭</p>
-          <br />
-          <p>Enjoy :)</p>
-        </div>
-      </Grid>
-      <Grid container justifyContent="center" style={{ padding: 100 }}>
+       <Grid container justifyContent="center" style={{ marginBottom: "100px" }}>
         <img src="/graphics/Quill.svg" />
+      </Grid>
+      <Grid container justifyContent="center" className={classes.header}>
+        Welcome to brain dump central 💭
       </Grid>
       {allEntries.map((entry) => (
         <Grid style={{ marginBottom: 50 }}>

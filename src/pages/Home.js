@@ -93,12 +93,13 @@ const styles = (theme) => ({
   introText: {
     width: 500,
     position: "relative",
+    textAlign: "left",
+    lineHeight: "30px"
   },
 
   header: {
     fontFamily: "Newsreader",
     fontSize: 30,
-    // textShadow: "0px 2px 2px rgba(0, 0, 0, 0.2)",
   },
 
   profiles: {
@@ -149,9 +150,9 @@ const styles = (theme) => ({
 
   brushStroke1: {
     position: "absolute",
-    top: -55,
+    top: -80,
     left: -275,
-    height: "200%",
+    height: "250%",
     width: "200%",
     zIndex: -1,
   },
@@ -165,7 +166,6 @@ const styles = (theme) => ({
 
   carouselHeader: {
     marginBottom: 150,
-    position: "relative",
     width: 600,
   },
 
@@ -204,17 +204,16 @@ const styles = (theme) => ({
 });
 
 const Home = ({ classes }) => {
-  const [profiles, setProfiles] = useState([]);
+  // const [profiles, setProfiles] = useState([]);
   const [carouselSlides, setCarouselSlides] = useState([]);
-  const [currents, setCurrents] = useState([]);
 
   useEffect(() => {
-    sanityClient
-      .fetch(`*[_type == "profile"]`)
-      .then((data) => {
-        setProfiles(data);
-      })
-      .catch(console.error);
+    // sanityClient
+    //   .fetch(`*[_type == "profile"]`)
+    //   .then((data) => {
+    //     setProfiles(data);
+    //   })
+    //   .catch(console.error);
 
     sanityClient
       .fetch(`*[_type == "activity" || _type == "note"]`)
@@ -222,13 +221,6 @@ const Home = ({ classes }) => {
         setCarouselSlides(
           data.sort((a, b) => new Date(b._createdAt) - new Date(a._createdAt))
         );
-      })
-      .catch(console.error);
-
-    sanityClient
-      .fetch(`*[_type == "currents"]`)
-      .then((data) => {
-        setCurrents(data[0].currents);
       })
       .catch(console.error);
   }, []);
@@ -251,8 +243,8 @@ const Home = ({ classes }) => {
             />
             <img
               className={classes.leftImage}
-              src="/images/Headshot.jpg"
-              alt="Headshot"
+              src="/images/Portrait1.jpg"
+              alt="Portrait1"
             />
             <img
               className={classes.leftPaperclip}
@@ -270,8 +262,8 @@ const Home = ({ classes }) => {
             />
             <img
               className={classes.rightImage}
-              src="/images/Portrait.jpg"
-              alt="Portrait"
+              src="/images/Portrait2.jpg"
+              alt="Portrait2"
             />
             <img
               className={classes.rightPaperclip}
@@ -288,17 +280,20 @@ const Home = ({ classes }) => {
             src="/graphics/BrushStroke1.png"
             alt="Brush Stroke"
           />
-          <p className={classes.header}>Hey there 👋</p>
-          <br />
-          <p>
+          <Grid container justifyContent="center" alignItems="center" spacing={5}>
+            <Grid item className={classes.header}>
+            👋 Hey
+            </Grid>
+            <Grid item >
             Welcome to my creative outlet! <br />
-            This is where I share little snippets of my life.
-            <br />
-            <br /> Scroll to get to know me :)
-          </p>
+            I'm an engineering student dedicated to creating <br/> product-driven solutions to human problems and 
+            <br/> making people happy :)
+            </Grid>
+           
+          </Grid>
         </div>
       </Grid>
-      <Grid className={classes.profiles}>
+      {/* <Grid className={classes.profiles}>
         <Grid container justifyContent="center">
           <Grid container xs={5} justifyContent="center"></Grid>
           <Grid xs={5} container justifyContent="center" alignItems="center">
@@ -336,15 +331,13 @@ const Home = ({ classes }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </Grid>
-      <Grid container justifyContent="center">
+      </Grid> */}
+      <Grid container justifyContent="center" style={{paddingTop: "75px"}}>
         <div className={classes.carouselHeader}>
+        <Grid container justifyContent="center" style={{ padding: 100 }}>
+        <img src="/graphics/Paintbrush.svg" />
+      </Grid>
           <p className={classes.header}>Hot off the press 🍵</p>
-          <img
-            className={classes.brushStroke2}
-            src="/graphics/BrushStroke2.png"
-            alt="Brush Stroke"
-          />
         </div>
       </Grid>
       <Grid className={classes.carousel}>
@@ -354,9 +347,6 @@ const Home = ({ classes }) => {
           navigation={false}
           grabCursor={true}
         >
-          <SwiperSlide className={classes.carouselSwiperSlide}>
-            <CurrentsCard classes={classes} currents={currents} />
-          </SwiperSlide>
           {carouselSlides.map((slide, key) => (
             <SwiperSlide className={classes.carouselSwiperSlide}>
               {slide._type === "activity" ? (

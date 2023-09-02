@@ -17,8 +17,12 @@ const styles = (theme) => ({
 
   navLogo: {
     position: "absolute",
-    left: "50px",
-    top: "12px",
+    left: "35px",
+    margin: "15px",
+    fontFamily: "Newsreader",
+    fontSize: 40,
+    textDecoration: "none",
+    color: theme.palette.primary.contrastText
   },
 
   navUl: {
@@ -69,7 +73,7 @@ const NavBar = ({ classes }) => {
     <div className={classes.navContainer}>
       <nav className={classes.nav}>
         <a href="/" className={classes.navLogo}>
-          <img src="/graphics/Signature.svg" alt="Signature" />
+          Cng
         </a>
 
         <ul className={classes.navUl}>

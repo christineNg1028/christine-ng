@@ -1,7 +1,7 @@
 const tabs = [
   {
     name: "Resume",
-    url: "https://cdn.sanity.io/files/465yo57o/production/624873f2544ea41da871b6bd8deed1e4a45c3a70.pdf",
+    url: "https://cdn.sanity.io/files/465yo57o/production/3b16c1a2e25a9794ee9841e0355a13d47e125872.pdf",
   },
   {
     name: "Projects",

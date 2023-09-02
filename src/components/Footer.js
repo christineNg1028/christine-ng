@@ -44,7 +44,7 @@ const Footer = ({ classes }) => {
         </div>
       </Grid>
       <Grid container xs={4} justifyContent="center">
-        Made with 💖 by Christine Ng © 2023
+        Christine Ng © 2023
       </Grid>
     </Grid>
   );
